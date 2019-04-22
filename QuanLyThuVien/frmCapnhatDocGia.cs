@@ -66,8 +66,8 @@ namespace QuanLyThuVien
                 try
                 {
                     docGiaSer.deleteModel(txtMaDocGia.Text);
-                    docGiaSer.getAll(dgvDocGia);
                     MessageBox.Show("Xóa thành công");
+                    docGiaSer.getAll(dgvDocGia);
                 }
                 catch
                 {
@@ -115,18 +115,41 @@ namespace QuanLyThuVien
             docGiaMod.GioiTinh = cbGioiTinh.Text;
             docGiaMod.Lop = txtLop.Text;
             docGiaMod.DiaChi = txtDiaChi.Text;
-            docGiaMod.Email = txtEmail.Text;
-            docGiaMod.GhiChu = rtbGhiChu.Text;
-            if (action == "add")
+            System.Text.RegularExpressions.Regex expr = new System.Text.RegularExpressions.Regex(@"^[a-zA-Z][\w\.-]{2,28}[a-zA-Z0-9]@[a-zA-Z0-9][\w\.-]*[a-zA-Z0-9]\.[a-zA-Z][a-zA-Z\.]*[a-zA-Z]$");
+            if (expr.IsMatch(txtEmail.Text))
             {
-                Object obj = docGiaSer.getModel(txtMaDocGia.Text);
-                if (obj != null)
+                docGiaMod.Email = txtEmail.Text;
+                docGiaMod.GhiChu = rtbGhiChu.Text;
+                if (action == "add")
                 {
-                    MessageBox.Show("Mã bị trùng");
+                    Object obj = docGiaSer.getModel(txtMaDocGia.Text);
+                    if (obj != null)
+                    {
+                        MessageBox.Show("Mã bị trùng");
+                    }
+                    else
+                    {
+                        docGiaSer.createModel(docGiaMod);
+                        MessageBox.Show("Lưu thành công");
+                        docGiaSer.getAll(dgvDocGia);
+                        clearText();
+                        txtMaDocGia.Enabled = false;
+                        txtHoTen.Enabled = false;
+                        mtbNgaySinh.Enabled = false;
+                        cbGioiTinh.Enabled = false;
+                        txtLop.Enabled = false;
+                        txtDiaChi.Enabled = false;
+                        txtEmail.Enabled = false;
+                        rtbGhiChu.Enabled = false;
+                        btnThem.Enabled = true;
+                        btnSua.Enabled = true;
+                        btnXoa.Enabled = true;
+                        btnLuu.Enabled = false;
+                    }
                 }
                 else
                 {
-                    docGiaSer.createModel(docGiaMod);
+                    docGiaSer.updateModel(docGiaMod);
                     MessageBox.Show("Lưu thành công");
                     docGiaSer.getAll(dgvDocGia);
                     clearText();
@@ -146,22 +169,7 @@ namespace QuanLyThuVien
             }
             else
             {
-                docGiaSer.updateModel(docGiaMod);
-                MessageBox.Show("Lưu thành công");
-                docGiaSer.getAll(dgvDocGia);
-                clearText();
-                txtMaDocGia.Enabled = false;
-                txtHoTen.Enabled = false;
-                mtbNgaySinh.Enabled = false;
-                cbGioiTinh.Enabled = false;
-                txtLop.Enabled = false;
-                txtDiaChi.Enabled = false;
-                txtEmail.Enabled = false;
-                rtbGhiChu.Enabled = false;
-                btnThem.Enabled = true;
-                btnSua.Enabled = true;
-                btnXoa.Enabled = true;
-                btnLuu.Enabled = false;
+                MessageBox.Show("Email không đúng định dạng");
             }
         }
     }

@@ -25,13 +25,17 @@ namespace QuanLyThuVien
         private void capNhatThongTinMuon_Load(object sender, EventArgs e)
         {
             connectSer.Connect();
+            connectSer.LoadDataCombobox(cbMaDocGia, "select MADG from tblDocGia");
+            connectSer.LoadDataCombobox(cbTenDocGia, "select HOTEN from tblDocGia");
+            connectSer.LoadDataCombobox(cbMaSach, "select MASACH from tblSach");
+            connectSer.LoadDataCombobox(cbTenSach, "select TENSACH from tblSach");
             thongTinMuonSer.getAll(dgvThongTinMuon);        
         }
 
         private void clearText()
         {
-            txtMaDG.Text = "";
-            txtMaSach.Text = "";
+            cbMaDocGia.Text = "";
+            cbMaSach.Text = "";
             txtSoPhieuMuon.Text = "";
             mktNgayMuon.Text = "";
             mktNgayTra.Text = "";
@@ -41,8 +45,8 @@ namespace QuanLyThuVien
         private void btnThem_Click(object sender, EventArgs e)
         {
             clearText();
-            txtMaDG.Enabled = true;
-            txtMaSach.Enabled = true;
+            cbMaDocGia.Enabled = true;
+            cbMaSach.Enabled = true;
             txtSoPhieuMuon.Enabled = true;
             mktNgayMuon.Enabled = true;
             mktNgayTra.Enabled = true;
@@ -58,31 +62,31 @@ namespace QuanLyThuVien
         {
             if (MessageBox.Show("Bạn có muốn xóa không?(Y/N)", "Delete", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
-                thongTinMuonSer.deleteModel(txtMaDG.Text);
-                thongTinMuonSer.getAll(dgvThongTinMuon);
+                thongTinMuonSer.deleteModel(cbMaDocGia.Text);
                 MessageBox.Show("Xóa thành công");
+                thongTinMuonSer.getAll(dgvThongTinMuon);
             }
         }
 
         private void dgvThongTinMuon_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            txtMaDG.Text = dgvThongTinMuon.Rows[e.RowIndex].Cells[0].Value.ToString();
-            txtMaSach.Text = dgvThongTinMuon.Rows[e.RowIndex].Cells[1].Value.ToString();
+            cbMaDocGia.Text = dgvThongTinMuon.Rows[e.RowIndex].Cells[0].Value.ToString();
+            cbMaSach.Text = dgvThongTinMuon.Rows[e.RowIndex].Cells[1].Value.ToString();
             txtSoPhieuMuon.Text = dgvThongTinMuon.Rows[e.RowIndex].Cells[2].Value.ToString();
             mktNgayMuon.Text = dgvThongTinMuon.Rows[e.RowIndex].Cells[3].Value.ToString();
             mktNgayTra.Text = dgvThongTinMuon.Rows[e.RowIndex].Cells[4].Value.ToString();
             cbXacNhan.Text = dgvThongTinMuon.Rows[e.RowIndex].Cells[5].Value.ToString();
             rtbGhiChu.Text = dgvThongTinMuon.Rows[e.RowIndex].Cells[6].Value.ToString();
             btnThem.Enabled = true;
+            btnSua.Enabled = true;
             btnXoa.Enabled = true;
             cbXacNhan.Enabled = true;
         }
 
         private void btnSua_Click(object sender, EventArgs e)
         {
-            txtMaSach.Enabled = true;
-            txtMaDG.Enabled = true;
-            txtMaSach.Enabled = true;
+            cbMaDocGia.Enabled = true;
+            cbMaSach.Enabled = true;
             txtSoPhieuMuon.Enabled = true;
             mktNgayMuon.Enabled = true;
             mktNgayTra.Enabled = true;
@@ -96,8 +100,8 @@ namespace QuanLyThuVien
 
         private void btnLuu_Click(object sender, EventArgs e)
         {
-            muonMod.MaDocGia = txtMaDG.Text;
-            muonMod.MaSach = txtMaSach.Text;
+            muonMod.MaDocGia = cbMaDocGia.Text;
+            muonMod.MaSach = cbMaSach.Text;
             muonMod.SoPhieuMuon = Convert.ToInt32(txtSoPhieuMuon.Text);
             muonMod.NgayMuon = mktNgayMuon.Text;
             muonMod.NgayTra = mktNgayTra.Text;
@@ -109,9 +113,8 @@ namespace QuanLyThuVien
                 MessageBox.Show("Lưu thành công");
                 thongTinMuonSer.getAll(dgvThongTinMuon);
                 clearText();
-                txtMaSach.Enabled = false;
-                txtMaDG.Enabled = false;
-                txtMaSach.Enabled = false;
+                cbMaDocGia.Enabled = false;
+                cbMaSach.Enabled = false;
                 txtSoPhieuMuon.Enabled = false;
                 mktNgayMuon.Enabled = false;
                 mktNgayTra.Enabled = false;
@@ -127,9 +130,8 @@ namespace QuanLyThuVien
                 MessageBox.Show("Lưu thành công");
                 thongTinMuonSer.getAll(dgvThongTinMuon);
                 clearText();
-                txtMaSach.Enabled = false;
-                txtMaDG.Enabled = false;
-                txtMaSach.Enabled = false;
+                cbMaDocGia.Enabled = false;
+                cbMaSach.Enabled = false;
                 txtSoPhieuMuon.Enabled = false;
                 mktNgayMuon.Enabled = false;
                 mktNgayTra.Enabled = false;
@@ -139,6 +141,31 @@ namespace QuanLyThuVien
                 btnXoa.Enabled = true;
                 btnLuu.Enabled = false;
             }
+        }
+
+        private void txtSoPhieuMuon_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar);
+        }
+
+        private void cbMaDocGia_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            cbTenDocGia.SelectedIndex = cbMaDocGia.SelectedIndex;
+        }
+
+        private void cbTenDocGia_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            cbMaDocGia.SelectedIndex = cbTenDocGia.SelectedIndex;
+        }
+
+        private void cbMaSach_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            cbTenSach.SelectedIndex = cbMaSach.SelectedIndex;
+        }
+
+        private void cbTenSach_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            cbMaSach.SelectedIndex = cbTenSach.SelectedIndex;
         }
 
         //private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)

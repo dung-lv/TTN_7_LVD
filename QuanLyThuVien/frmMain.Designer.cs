@@ -163,8 +163,8 @@
             this.QuanLyHeThongTSMI.Image = global::QuanLyThuVien.Properties.Resources.onebit_01;
             this.QuanLyHeThongTSMI.Name = "QuanLyHeThongTSMI";
             this.QuanLyHeThongTSMI.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.A)));
-            this.QuanLyHeThongTSMI.Size = new System.Drawing.Size(162, 24);
-            this.QuanLyHeThongTSMI.Text = "&Quản Lý Hệ Thống";
+            this.QuanLyHeThongTSMI.Size = new System.Drawing.Size(106, 24);
+            this.QuanLyHeThongTSMI.Text = "Hệ Thống";
             // 
             // TaoTaiKhoanTSMI
             // 
@@ -201,8 +201,8 @@
             this.CapNhatTSMI.Image = global::QuanLyThuVien.Properties.Resources.onebit_20;
             this.CapNhatTSMI.Name = "CapNhatTSMI";
             this.CapNhatTSMI.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.D)));
-            this.CapNhatTSMI.Size = new System.Drawing.Size(103, 24);
-            this.CapNhatTSMI.Text = "Cập Nhật";
+            this.CapNhatTSMI.Size = new System.Drawing.Size(93, 24);
+            this.CapNhatTSMI.Text = "Quản Lý";
             // 
             // CapNhatSachTSMI
             // 

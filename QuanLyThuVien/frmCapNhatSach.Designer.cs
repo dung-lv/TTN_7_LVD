@@ -158,6 +158,7 @@
             this.txtSoSachHong.Enabled = false;
             this.txtSoSachHong.Location = new System.Drawing.Point(152, 170);
             this.txtSoSachHong.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.txtSoSachHong.MaxLength = 100;
             this.txtSoSachHong.Name = "txtSoSachHong";
             this.txtSoSachHong.Size = new System.Drawing.Size(189, 22);
             this.txtSoSachHong.TabIndex = 6;
@@ -234,6 +235,7 @@
             this.txtNamXuatBan.Name = "txtNamXuatBan";
             this.txtNamXuatBan.Size = new System.Drawing.Size(247, 22);
             this.txtNamXuatBan.TabIndex = 3;
+            this.txtNamXuatBan.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNamXuatBan_KeyPress);
             // 
             // txtSoLuong
             // 
@@ -243,6 +245,7 @@
             this.txtSoLuong.Name = "txtSoLuong";
             this.txtSoLuong.Size = new System.Drawing.Size(247, 22);
             this.txtSoLuong.TabIndex = 5;
+            this.txtSoLuong.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSoLuong_KeyPress);
             // 
             // txtSoTrang
             // 
@@ -252,6 +255,7 @@
             this.txtSoTrang.Name = "txtSoTrang";
             this.txtSoTrang.Size = new System.Drawing.Size(247, 22);
             this.txtSoTrang.TabIndex = 4;
+            this.txtSoTrang.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSoTrang_KeyPress);
             // 
             // txtTenSach
             // 

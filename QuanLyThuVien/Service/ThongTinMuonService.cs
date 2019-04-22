@@ -17,19 +17,19 @@ namespace QuanLyThuVien.Service
 
         public void getAll(DataGridView dgv)
         {
-            string sql = "select MADG,MASACH,SOPHIEUMUON,NGAYMUON,NGAYTRA,GHICHU from tblThongTinMuon";
+            string sql = "select MADG,MASACH,SOPHIEUMUON,NGAYMUON,NGAYTRA,XACNHANTRA,GHICHU from tblThongTinMuon";
             connectSer.LoadDataDataGridView(dgv, sql);
         }
 
         public void createModel(tblThongTinMuonModel muon)
         {
-            string sql = "Insert Into tblThongTinMuon(MADG,MASACH,SOPHIEUMUON,NGAYMUON,NGAYTRA,GHICHU) values ('" + muon.MaDocGia + "','" + muon.MaSach + "','" + muon.SoPhieuMuon + "','" + muon.NgayMuon + "','" + muon.NgayTra + "',N'" + muon.GhiChu + "')";
+            string sql = "Insert Into tblThongTinMuon(MADG,MASACH,SOPHIEUMUON,NGAYMUON,NGAYTRA,XACNHANTRA,GHICHU) values ('" + muon.MaDocGia + "','" + muon.MaSach + "','" + muon.SoPhieuMuon + "','" + muon.NgayMuon + "','" + muon.NgayTra + "', N'Chưa trả'" +"', N'" + muon.GhiChu + "')";
             connectSer.ThucThiSQLTheoPhiKetNoi(sql);
         }
 
         public void updateModel(tblThongTinMuonModel muon)
         {
-            string sql = "Update tblThongTinMuon set MASACH='" + muon.MaSach + "',SOPHIEUMUON='" + muon.SoPhieuMuon + "',NGAYMUON='" + muon.NgayMuon + "',NGAYTRA='" + muon.NgayTra + "',XACNHANTRA='" + muon.XacNhanTra + "',GHICHU=N'" + muon.GhiChu + "' where MADG='" + muon.MaDocGia + "'";
+            string sql = "Update tblThongTinMuon set MASACH='" + muon.MaSach + "',SOPHIEUMUON='" + muon.SoPhieuMuon + "',NGAYMUON='" + muon.NgayMuon + "',NGAYTRA='" + muon.NgayTra + "',XACNHANTRA=N'" + muon.XacNhanTra + "',GHICHU=N'" + muon.GhiChu + "' where MADG='" + muon.MaDocGia + "'";
             connectSer.ThucThiSQLTheoPhiKetNoi(sql);
         }
 
@@ -41,13 +41,7 @@ namespace QuanLyThuVien.Service
 
         public void searchModelBasic(string luaChon, string tuKhoa, DataGridView data)
         {
-            string sql = "select MADG,MASACH,SOPHIEUMUON,NGAYMUON,NGAYTRA,GHICHU from tblThongTinMuon where " + luaChon + " like'%" + tuKhoa + "%'";
-            connectSer.LoadDataDataGridView(data, sql);
-        }
-
-        public void searchModelAdvanced(tblThongTinMuonModel muon, DataGridView data)
-        {
-            string sql = "select MADG,MASACH,SOPHIEUMUON,NGAYMUON,NGAYTRA,GHICHU from tblThongTinMuon where MADG like'%" + muon.MaDocGia + "%'or MASACH like'%" + muon.MaSach + "%'or NGAYMUON = '" + muon.NgayMuon + "'or NGAYTRA = '" + muon.NgayTra + "'";
+            string sql = "select MADG,MASACH,SOPHIEUMUON,NGAYMUON,NGAYTRA,GHICHU from tblThongTinMuon where " + luaChon + " like N'%" + tuKhoa + "%'";
             connectSer.LoadDataDataGridView(data, sql);
         }
     }

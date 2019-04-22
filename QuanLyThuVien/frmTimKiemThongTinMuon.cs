@@ -23,32 +23,18 @@ namespace QuanLyThuVien
         private ThongTinMuonService thongTinMuonSer = new ThongTinMuonService();
         private tblThongTinMuonModel muonMod = new tblThongTinMuonModel();
 
+
+        private void frmTimKiemThongTinMuon_Load(object sender, EventArgs e)
+        {
+            thongTinMuonSer.getAll(dgvMuonSachCoBan);
+        }
+
         private void btnTimCoBan_Click(object sender, EventArgs e)
         {
             thongTinMuonSer.searchModelBasic(cbLuaChon.Text, txtTuKhoa.Text, dgvMuonSachCoBan);
         }
 
         private void btnThoatCoBan_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
-
-        private void frmTimKiemThongTinMuon_Load(object sender, EventArgs e)
-        {
-            thongTinMuonSer.getAll(dgvMuonSachCoBan);
-            thongTinMuonSer.getAll(dgvMuonSachNangCao);
-        }
-
-        private void btnTimNangCao_Click(object sender, EventArgs e)
-        {
-            muonMod.MaDocGia = txtMaDocGia.Text;
-            muonMod.MaSach = txtMaSach.Text;
-            muonMod.NgayMuon = mtbNgayMuon.Text;
-            muonMod.NgayTra = mtbNgayTra.Text;
-            thongTinMuonSer.searchModelAdvanced(muonMod, dgvMuonSachNangCao);
-        }
-
-        private void btnThoatNangCao_Click(object sender, EventArgs e)
         {
             this.Close();
         }

@@ -100,7 +100,7 @@ namespace QuanLyThuVien
             txtSoSachHong.Text = dgvSach.Rows[e.RowIndex].Cells[8].Value.ToString();
             mtbNgayNhap.Text = dgvSach.Rows[e.RowIndex].Cells[9].Value.ToString();
             rtbGhiChu.Text = dgvSach.Rows[e.RowIndex].Cells[10].Value.ToString();
-            btnThem.Enabled = true;
+            btnSua.Enabled = true;
             btnXoa.Enabled = true;
         }
 
@@ -116,10 +116,7 @@ namespace QuanLyThuVien
 
         private void txtSoSachHong_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (e.KeyChar >= '0' && e.KeyChar <= '9')
-                e.Handled = false;
-            else
-                e.Handled = true;
+            e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar);
         }
 
         private void cbTenLinhVuc_SelectedIndexChanged(object sender, EventArgs e)
@@ -197,6 +194,21 @@ namespace QuanLyThuVien
                 btnXoa.Enabled = true;
                 btnLuu.Enabled = false;
             }
+        }
+
+        private void txtSoLuong_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar);
+        }
+
+        private void txtSoTrang_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar);
+        }
+
+        private void txtNamXuatBan_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar);
         }
     }
 }

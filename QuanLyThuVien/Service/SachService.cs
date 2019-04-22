@@ -49,16 +49,7 @@ namespace QuanLyThuVien.Service
 
         public void searchModelBasic(string luaChon, string tuKhoa, DataGridView data)
         {
-            string sql = "select MASACH,TENSACH,TACGIA,NHAXUATBAN,MALV,NAMXB,SOTRANG,SOLUONG,SOSACHHONG,NGAYNHAP,GHICHU from tblSach where " + luaChon + " like'%" + tuKhoa + "%'";
-            connectSer.LoadDataDataGridView(data, sql);
-        }
-
-        public void searchModelAdvanced(tblSachModel sach, DataGridView data)
-        {
-            string sql = "select MASACH,TENSACH,TACGIA,NHAXUATBAN,MALV,NAMXB,SOTRANG,SOLUONG,SOSACHHONG,NGAYNHAP,GHICHU from tblSach where MASACH like'%" + sach.MaSach + "%'or TENSACH like'%" + sach.TenSach + "%'or TACGIA like'%" + sach.TacGia + "%'or NHAXUATBAN like'%" + sach.NhaXuatBan
-                + "%'or MALV like'%" + sach.MaLinhVuc + "%'or NAMXB='"
-                + sach.NamXuatBan + "'or SOLUONG='" + sach.SoLuong + "'or NGAYNHAP='"
-                + sach.NgayNhap + "'";
+            string sql = "select MASACH,TENSACH,TACGIA,NHAXUATBAN,MALV,NAMXB,SOTRANG,SOLUONG,SOSACHHONG,NGAYNHAP,GHICHU from tblSach where " + luaChon + " like N'%" + tuKhoa + "%'";
             connectSer.LoadDataDataGridView(data, sql);
         }
     }

@@ -26,7 +26,6 @@ namespace QuanLyThuVien
         private void timKiem_Load(object sender, EventArgs e)
         {
             sachSer.getAll(dgvSachCoBan);
-            sachSer.getAll(dgvSachNangCao);
         }
 
         private void btnTimCoBan_Click(object sender, EventArgs e)
@@ -39,23 +38,9 @@ namespace QuanLyThuVien
             this.Close();
         }
 
-        private void btnTimNangCao_Click(object sender, EventArgs e)
+        private void txtNXB_KeyPress(object sender, KeyPressEventArgs e)
         {
-            sachMod.MaSach = txtMaSach.Text;
-            sachMod.TenSach = txtTenSach.Text;
-            sachMod.TacGia = txtTacGia.Text;
-            sachMod.NhaXuatBan = txtNXB.Text;
-            sachMod.MaLinhVuc = txtMaLinhVuc.Text;
-            sachMod.NamXuatBan = txtNamXuatBan.Text;
-            sachMod.SoLuong = Convert.ToInt32(txtSoLuong.Text);
-            sachMod.NgayNhap = mtbNgayNhap.Text;
-            sachSer.searchModelAdvanced(sachMod, dgvSachNangCao);
+            e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar);
         }
-
-        private void btnThoatNangCao_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
-
     }
 }

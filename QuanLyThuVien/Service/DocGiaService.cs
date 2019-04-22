@@ -47,13 +47,7 @@ namespace QuanLyThuVien.Service
 
         public void searchModelBasic(string luaChon, string tuKhoa, DataGridView data)
         {
-            string sql = "select MADG,HOTEN,NGAYSINH,GIOITINH,LOP,DIACHI,EMAIL,GHICHU from tblDocGia where " + luaChon + " like'%" + tuKhoa + "%'";
-            connectSer.LoadDataDataGridView(data, sql);
-        }
-
-        public void searchModelAdvanced(tblDocGiaModel docGia, DataGridView data)
-        {
-            string sql = "select MADG,HOTEN,NGAYSINH,GIOITINH,LOP,DIACHI,EMAIL,GHICHU from tblDocGia where MADG like'%" + docGia.MaDocGia + "%'or HOTEN like'%" + docGia.HoTen + "%'or NGAYSINH='" + docGia.HoTen + "'or GIOITINH='" + docGia.GioiTinh + "'or LOP like'%" + docGia.Lop + "%'or DIACHI like'%" + docGia.DiaChi + "%'";
+            string sql = "select MADG,HOTEN,NGAYSINH,GIOITINH,LOP,DIACHI,EMAIL,GHICHU from tblDocGia where " + luaChon + " like N'%" + tuKhoa + "%'";
             connectSer.LoadDataDataGridView(data, sql);
         }
     }

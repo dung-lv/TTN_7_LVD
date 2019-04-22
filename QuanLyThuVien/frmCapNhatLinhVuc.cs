@@ -56,8 +56,8 @@ namespace QuanLyThuVien
                 try
                 {
                     linhVucSer.deleteModel(txtMaLinhVuc.Text);
-                    linhVucSer.getAll(dgvLinhVuc);
                     MessageBox.Show("Xóa thành công");
+                    linhVucSer.getAll(dgvLinhVuc);
                 }
                 catch
                 {
