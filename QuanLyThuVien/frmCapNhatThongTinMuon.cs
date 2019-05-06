@@ -8,6 +8,7 @@ using System.Text;
 using System.Windows.Forms;
 using QuanLyThuVien.Service;
 using QuanLyThuVien.Model;
+using System.Globalization;
 
 namespace QuanLyThuVien
 {
@@ -24,21 +25,25 @@ namespace QuanLyThuVien
 
         private void capNhatThongTinMuon_Load(object sender, EventArgs e)
         {
+            dtpNgayMuon.Format = DateTimePickerFormat.Custom;
+            dtpNgayMuon.CustomFormat = "dd-MM-yyyy";
+            dtpNgayTra.Format = DateTimePickerFormat.Custom;
+            dtpNgayTra.CustomFormat = "dd-MM-yyyy";
+
             connectSer.Connect();
             connectSer.LoadDataCombobox(cbMaDocGia, "select MADG from tblDocGia");
             connectSer.LoadDataCombobox(cbTenDocGia, "select HOTEN from tblDocGia");
-            connectSer.LoadDataCombobox(cbMaSach, "select MASACH from tblSach");
-            connectSer.LoadDataCombobox(cbTenSach, "select TENSACH from tblSach");
-            thongTinMuonSer.getAll(dgvThongTinMuon);        
+            connectSer.LoadDataListBox(lbMaSach, "select MASACH from tblSach");
+            thongTinMuonSer.getAll(dgvThongTinMuon);
         }
 
         private void clearText()
         {
-            cbMaDocGia.Text = "";
-            cbMaSach.Text = "";
-            txtSoPhieuMuon.Text = "";
-            mktNgayMuon.Text = "";
-            mktNgayTra.Text = "";
+            cbMaDocGia.SelectedItem = null;
+            cbTenDocGia.SelectedItem = null;
+            txtSoLuongMuon.Text = "";
+            lbMaSach.SelectedItem = null;
+            cbXacNhan.SelectedItem = null;
             rtbGhiChu.Text = "";
         }
 
@@ -46,10 +51,9 @@ namespace QuanLyThuVien
         {
             clearText();
             cbMaDocGia.Enabled = true;
-            cbMaSach.Enabled = true;
-            txtSoPhieuMuon.Enabled = true;
-            mktNgayMuon.Enabled = true;
-            mktNgayTra.Enabled = true;
+            lbMaSach.Enabled = true;
+            dtpNgayMuon.Enabled = true;
+            dtpNgayTra.Enabled = true;
             rtbGhiChu.Enabled = true;
             btnThem.Enabled = false;
             btnSua.Enabled = false;
@@ -62,34 +66,35 @@ namespace QuanLyThuVien
         {
             if (MessageBox.Show("Bạn có muốn xóa không?(Y/N)", "Delete", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
-                thongTinMuonSer.deleteModel(cbMaDocGia.Text);
+                thongTinMuonSer.deleteModel(cbMaDocGia.Text, lbMaSach.SelectedItem.ToString(), txtSoLuongMuon.Text);
                 MessageBox.Show("Xóa thành công");
+                clearText();
+                btnSua.Enabled = false;
+                btnLuu.Enabled = false;
                 thongTinMuonSer.getAll(dgvThongTinMuon);
             }
         }
 
         private void dgvThongTinMuon_CellClick(object sender, DataGridViewCellEventArgs e)
         {
+            lbMaSach.SelectedItem = null;
             cbMaDocGia.Text = dgvThongTinMuon.Rows[e.RowIndex].Cells[0].Value.ToString();
-            cbMaSach.Text = dgvThongTinMuon.Rows[e.RowIndex].Cells[1].Value.ToString();
-            txtSoPhieuMuon.Text = dgvThongTinMuon.Rows[e.RowIndex].Cells[2].Value.ToString();
-            mktNgayMuon.Text = dgvThongTinMuon.Rows[e.RowIndex].Cells[3].Value.ToString();
-            mktNgayTra.Text = dgvThongTinMuon.Rows[e.RowIndex].Cells[4].Value.ToString();
+            lbMaSach.SelectedItem = dgvThongTinMuon.Rows[e.RowIndex].Cells[1].Value.ToString();
+            txtSoLuongMuon.Text = dgvThongTinMuon.Rows[e.RowIndex].Cells[2].Value.ToString();
+            dtpNgayMuon.Text = dgvThongTinMuon.Rows[e.RowIndex].Cells[3].Value.ToString();
+            dtpNgayTra.Text = dgvThongTinMuon.Rows[e.RowIndex].Cells[4].Value.ToString();
             cbXacNhan.Text = dgvThongTinMuon.Rows[e.RowIndex].Cells[5].Value.ToString();
             rtbGhiChu.Text = dgvThongTinMuon.Rows[e.RowIndex].Cells[6].Value.ToString();
+            btnLuu.Enabled = false;
             btnThem.Enabled = true;
             btnSua.Enabled = true;
             btnXoa.Enabled = true;
-            cbXacNhan.Enabled = true;
+            action = "update";
         }
 
         private void btnSua_Click(object sender, EventArgs e)
         {
-            cbMaDocGia.Enabled = true;
-            cbMaSach.Enabled = true;
-            txtSoPhieuMuon.Enabled = true;
-            mktNgayMuon.Enabled = true;
-            mktNgayTra.Enabled = true;
+            cbXacNhan.Enabled = true;
             rtbGhiChu.Enabled = true;
             btnThem.Enabled = false;
             btnSua.Enabled = false;
@@ -100,46 +105,67 @@ namespace QuanLyThuVien
 
         private void btnLuu_Click(object sender, EventArgs e)
         {
-            muonMod.MaDocGia = cbMaDocGia.Text;
-            muonMod.MaSach = cbMaSach.Text;
-            muonMod.SoPhieuMuon = Convert.ToInt32(txtSoPhieuMuon.Text);
-            muonMod.NgayMuon = mktNgayMuon.Text;
-            muonMod.NgayTra = mktNgayTra.Text;
-            muonMod.XacNhanTra = cbXacNhan.Text;
-            muonMod.GhiChu = rtbGhiChu.Text;
-            if (action == "add")
+            if (cbMaDocGia.Text == "")
             {
-                thongTinMuonSer.createModel(muonMod);
-                MessageBox.Show("Lưu thành công");
-                thongTinMuonSer.getAll(dgvThongTinMuon);
-                clearText();
-                cbMaDocGia.Enabled = false;
-                cbMaSach.Enabled = false;
-                txtSoPhieuMuon.Enabled = false;
-                mktNgayMuon.Enabled = false;
-                mktNgayTra.Enabled = false;
-                rtbGhiChu.Enabled = false;
-                btnThem.Enabled = true;
-                btnSua.Enabled = true;
-                btnXoa.Enabled = true;
-                btnLuu.Enabled = false;
+                MessageBox.Show("Mời nhập đấy đủ thông tin");
             }
             else
             {
-                thongTinMuonSer.updateModel(muonMod);
-                MessageBox.Show("Lưu thành công");
-                thongTinMuonSer.getAll(dgvThongTinMuon);
-                clearText();
-                cbMaDocGia.Enabled = false;
-                cbMaSach.Enabled = false;
-                txtSoPhieuMuon.Enabled = false;
-                mktNgayMuon.Enabled = false;
-                mktNgayTra.Enabled = false;
-                rtbGhiChu.Enabled = false;
-                btnThem.Enabled = true;
-                btnSua.Enabled = true;
-                btnXoa.Enabled = true;
-                btnLuu.Enabled = false;
+                if (lbMaSach.SelectedItems.Count == 0)
+                {
+                    MessageBox.Show("Mời chọn sách mượn");
+                }
+                else
+                {
+                    DateTime ngayMuon = Convert.ToDateTime(this.dtpNgayMuon.Text.Trim(), new CultureInfo("en-GB"));
+                    DateTime ngayTra = Convert.ToDateTime(this.dtpNgayTra.Text.Trim(), new CultureInfo("en-GB"));
+                    if(ngayMuon >= ngayTra)
+                    {
+                        MessageBox.Show("Ngày trả sách phải lớn hơn ngày mượn sách");
+                        return;
+                    }
+                    muonMod.MaDocGia = cbMaDocGia.Text;
+                    muonMod.GhiChu = rtbGhiChu.Text;
+                    muonMod.NgayMuon = dtpNgayMuon.Text;
+                    muonMod.NgayTra = dtpNgayTra.Text;
+                    if (action == "add")
+                    {
+                        foreach (object result in lbMaSach.SelectedItems)
+                        {
+                            Object obj = thongTinMuonSer.getModel(muonMod.MaDocGia, result.ToString());
+                            if (obj != null)
+                            {
+                                MessageBox.Show("Độc giả đã mượn sách này");
+                                return;
+                            }
+                            else
+                            {
+                                muonMod.MaSach = result.ToString();
+                                muonMod.SoLuongMuon = lbMaSach.SelectedItems.Count;
+                                thongTinMuonSer.createModel(muonMod);
+                            }
+                        }
+                    }
+                    else
+                    {
+                        muonMod.XacNhanTra = cbXacNhan.Text;
+                        thongTinMuonSer.updateModel(muonMod);
+                    }
+                    MessageBox.Show("Lưu thành công");
+                    clearText();
+                    thongTinMuonSer.getAll(dgvThongTinMuon);
+                    cbMaDocGia.Enabled = false;
+                    lbMaSach.Enabled = false;
+                    txtSoLuongMuon.Enabled = false;
+                    dtpNgayMuon.Enabled = false;
+                    dtpNgayTra.Enabled = false;
+                    cbXacNhan.Enabled = false;
+                    rtbGhiChu.Enabled = false;
+                    btnThem.Enabled = true;
+                    btnSua.Enabled = false;
+                    btnXoa.Enabled = false;
+                    btnLuu.Enabled = false;
+                }
             }
         }
 
@@ -156,16 +182,6 @@ namespace QuanLyThuVien
         private void cbTenDocGia_SelectedIndexChanged(object sender, EventArgs e)
         {
             cbMaDocGia.SelectedIndex = cbTenDocGia.SelectedIndex;
-        }
-
-        private void cbMaSach_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            cbTenSach.SelectedIndex = cbMaSach.SelectedIndex;
-        }
-
-        private void cbTenSach_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            cbMaSach.SelectedIndex = cbTenSach.SelectedIndex;
         }
 
         //private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)

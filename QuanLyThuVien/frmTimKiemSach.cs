@@ -28,11 +28,6 @@ namespace QuanLyThuVien
             sachSer.getAll(dgvSachCoBan);
         }
 
-        private void btnTimCoBan_Click(object sender, EventArgs e)
-        {
-            sachSer.searchModelBasic(cbLuaChon.Text, txtTuKhoa.Text, dgvSachCoBan);
-        }
-
         private void btnThoatCoBan_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -41,6 +36,11 @@ namespace QuanLyThuVien
         private void txtNXB_KeyPress(object sender, KeyPressEventArgs e)
         {
             e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar);
+        }
+
+        private void txtTuKhoa_TextChanged(object sender, EventArgs e)
+        {
+            sachSer.searchModelBasic(cbLuaChon.Text, txtTuKhoa.Text, dgvSachCoBan);
         }
     }
 }

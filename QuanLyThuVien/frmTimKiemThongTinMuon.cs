@@ -29,14 +29,14 @@ namespace QuanLyThuVien
             thongTinMuonSer.getAll(dgvMuonSachCoBan);
         }
 
-        private void btnTimCoBan_Click(object sender, EventArgs e)
-        {
-            thongTinMuonSer.searchModelBasic(cbLuaChon.Text, txtTuKhoa.Text, dgvMuonSachCoBan);
-        }
-
         private void btnThoatCoBan_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void txtTuKhoa_TextChanged(object sender, EventArgs e)
+        {
+            thongTinMuonSer.searchModelBasic(cbLuaChon.Text, txtTuKhoa.Text, dgvMuonSachCoBan);
         }
     }
 }

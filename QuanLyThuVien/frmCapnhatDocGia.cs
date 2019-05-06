@@ -25,6 +25,9 @@ namespace QuanLyThuVien
 
         private void capNhatDocGia_Load(object sender, EventArgs e)
         {
+            dtpNgaySinh.Format = DateTimePickerFormat.Custom;
+            dtpNgaySinh.CustomFormat = "dd-MM-yyyy";
+
             connectSer.Connect();
             docGiaSer.getAll(dgvDocGia);           
         }
@@ -33,12 +36,12 @@ namespace QuanLyThuVien
         {
             txtMaDocGia.Text = "";
             txtHoTen.Text = "";
-            mtbNgaySinh.Text = "";
             cbGioiTinh.Text = "";
             txtLop.Text = "";
             txtDiaChi.Text = "";
             txtEmail.Text = "";
             rtbGhiChu.Text = "";
+            cbGioiTinh.SelectedItem = null;
         }
 
         private void btnThem_Click(object sender, EventArgs e)
@@ -46,7 +49,7 @@ namespace QuanLyThuVien
             clearText();
             txtMaDocGia.Enabled = true;
             txtHoTen.Enabled = true;
-            mtbNgaySinh.Enabled = true;
+            dtpNgaySinh.Enabled = true;
             cbGioiTinh.Enabled = true;
             txtLop.Enabled = true;
             txtDiaChi.Enabled = true;
@@ -67,6 +70,9 @@ namespace QuanLyThuVien
                 {
                     docGiaSer.deleteModel(txtMaDocGia.Text);
                     MessageBox.Show("Xóa thành công");
+                    clearText();
+                    btnSua.Enabled = false;
+                    btnLuu.Enabled = false;
                     docGiaSer.getAll(dgvDocGia);
                 }
                 catch
@@ -80,7 +86,7 @@ namespace QuanLyThuVien
         {
             txtMaDocGia.Text = dgvDocGia.Rows[e.RowIndex].Cells[0].Value.ToString();
             txtHoTen.Text = dgvDocGia.Rows[e.RowIndex].Cells[1].Value.ToString();
-            mtbNgaySinh.Text = dgvDocGia.Rows[e.RowIndex].Cells[2].Value.ToString();
+            dtpNgaySinh.Text = dgvDocGia.Rows[e.RowIndex].Cells[2].Value.ToString();
             cbGioiTinh.Text = dgvDocGia.Rows[e.RowIndex].Cells[3].Value.ToString();
             txtLop.Text = dgvDocGia.Rows[e.RowIndex].Cells[4].Value.ToString();
             txtDiaChi.Text = dgvDocGia.Rows[e.RowIndex].Cells[5].Value.ToString();
@@ -88,13 +94,14 @@ namespace QuanLyThuVien
             rtbGhiChu.Text = dgvDocGia.Rows[e.RowIndex].Cells[7].Value.ToString();
             btnSua.Enabled = true;
             btnXoa.Enabled = true;
+            action = "update";
         }
 
         private void btnSua_Click(object sender, EventArgs e)
         {
             txtMaDocGia.Enabled = true;
             txtHoTen.Enabled = true;
-            mtbNgaySinh.Enabled = true;
+            dtpNgaySinh.Enabled = true;
             cbGioiTinh.Enabled = true;
             txtLop.Enabled = true;
             txtDiaChi.Enabled = true;
@@ -107,70 +114,75 @@ namespace QuanLyThuVien
             action = "update";              
         }
 
+        bool IsValidEmail(string email)
+        {
+            try
+            {
+                var addr = new System.Net.Mail.MailAddress(email);
+                return addr.Address == email;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
         private void btnLuu_Click(object sender, EventArgs e)
         {
-            docGiaMod.MaDocGia = txtMaDocGia.Text;
-            docGiaMod.HoTen = txtHoTen.Text;
-            docGiaMod.NgaySinh = mtbNgaySinh.Text;
-            docGiaMod.GioiTinh = cbGioiTinh.Text;
-            docGiaMod.Lop = txtLop.Text;
-            docGiaMod.DiaChi = txtDiaChi.Text;
-            System.Text.RegularExpressions.Regex expr = new System.Text.RegularExpressions.Regex(@"^[a-zA-Z][\w\.-]{2,28}[a-zA-Z0-9]@[a-zA-Z0-9][\w\.-]*[a-zA-Z0-9]\.[a-zA-Z][a-zA-Z\.]*[a-zA-Z]$");
-            if (expr.IsMatch(txtEmail.Text))
+            if(txtMaDocGia.Text == "" || txtHoTen.Text == "" || cbGioiTinh.Text == "" || txtLop.Text == "" || txtDiaChi.Text == "" || txtEmail.Text == "")
             {
-                docGiaMod.Email = txtEmail.Text;
-                docGiaMod.GhiChu = rtbGhiChu.Text;
-                if (action == "add")
+                MessageBox.Show("Mời nhập đầy đủ thông tin");
+            }
+            else
+            {
+                docGiaMod.MaDocGia = txtMaDocGia.Text;
+                docGiaMod.HoTen = txtHoTen.Text;
+                docGiaMod.NgaySinh = dtpNgaySinh.Text;
+                docGiaMod.GioiTinh = cbGioiTinh.Text;
+                docGiaMod.Lop = txtLop.Text;
+                docGiaMod.DiaChi = txtDiaChi.Text;
+                if (IsValidEmail(txtEmail.Text))
                 {
-                    Object obj = docGiaSer.getModel(txtMaDocGia.Text);
-                    if (obj != null)
+                    docGiaMod.Email = txtEmail.Text;
+                    docGiaMod.GhiChu = rtbGhiChu.Text;
+                    if (action == "add")
                     {
-                        MessageBox.Show("Mã bị trùng");
+                        Object obj = docGiaSer.getModel(txtMaDocGia.Text);
+                        if (obj != null)
+                        {
+                            MessageBox.Show("Mã bị trùng");
+                            return;
+                        }
+                        else
+                        {
+                            docGiaSer.createModel(docGiaMod);
+                        }
                     }
                     else
                     {
-                        docGiaSer.createModel(docGiaMod);
-                        MessageBox.Show("Lưu thành công");
-                        docGiaSer.getAll(dgvDocGia);
-                        clearText();
-                        txtMaDocGia.Enabled = false;
-                        txtHoTen.Enabled = false;
-                        mtbNgaySinh.Enabled = false;
-                        cbGioiTinh.Enabled = false;
-                        txtLop.Enabled = false;
-                        txtDiaChi.Enabled = false;
-                        txtEmail.Enabled = false;
-                        rtbGhiChu.Enabled = false;
-                        btnThem.Enabled = true;
-                        btnSua.Enabled = true;
-                        btnXoa.Enabled = true;
-                        btnLuu.Enabled = false;
+                        docGiaSer.updateModel(docGiaMod);
                     }
-                }
-                else
-                {
-                    docGiaSer.updateModel(docGiaMod);
                     MessageBox.Show("Lưu thành công");
-                    docGiaSer.getAll(dgvDocGia);
                     clearText();
+                    docGiaSer.getAll(dgvDocGia);
                     txtMaDocGia.Enabled = false;
                     txtHoTen.Enabled = false;
-                    mtbNgaySinh.Enabled = false;
+                    dtpNgaySinh.Enabled = false;
                     cbGioiTinh.Enabled = false;
                     txtLop.Enabled = false;
                     txtDiaChi.Enabled = false;
                     txtEmail.Enabled = false;
                     rtbGhiChu.Enabled = false;
                     btnThem.Enabled = true;
-                    btnSua.Enabled = true;
-                    btnXoa.Enabled = true;
+                    btnSua.Enabled = false;
+                    btnXoa.Enabled = false;
                     btnLuu.Enabled = false;
                 }
-            }
-            else
-            {
-                MessageBox.Show("Email không đúng định dạng");
-            }
+                else
+                {
+                    MessageBox.Show("Email không đúng định dạng");
+                }
+            }           
         }
     }
 }

@@ -29,14 +29,14 @@ namespace QuanLyThuVien
             docGiaSer.getAll(dgvDocGiaCoBan);
         }
 
-        private void btnTimCoBan_Click(object sender, EventArgs e)
-        {
-            docGiaSer.searchModelBasic(cbLuaChon.Text, txtTuKhoa.Text, dgvDocGiaCoBan);
-        }
-
         private void btnThoatCoBan_Click(object sender, EventArgs e)
         {
             this.Close();
-        } 
+        }
+
+        private void txtTuKhoa_TextChanged(object sender, EventArgs e)
+        {
+            docGiaSer.searchModelBasic(cbLuaChon.Text, txtTuKhoa.Text, dgvDocGiaCoBan);
+        }
     }
 }

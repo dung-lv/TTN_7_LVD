@@ -25,6 +25,9 @@ namespace QuanLyThuVien
 
         private void capNhatSach_Load(object sender, EventArgs e)
         {
+            dtpNgayNhap.Format = DateTimePickerFormat.Custom;
+            dtpNgayNhap.CustomFormat = "dd-MM-yyyy";
+
             connectSer.Connect();
             sachSer.getAll(dgvSach);
             connectSer.LoadDataCombobox(cbMaLinhVuc, "select MALV from tblLinhVuc");
@@ -41,8 +44,9 @@ namespace QuanLyThuVien
             txtNamXuatBan.Text = "";
             txtSoTrang.Text = "";
             txtSoLuong.Text = "";
-            txtSoSachHong.Text = "";
-            mtbNgayNhap.Text = "";
+            txtSoSachHong.Text = "0";
+            cbMaLinhVuc.SelectedItem = null;
+            cbTenLinhVuc.SelectedItem = null;
             rtbGhiChu.Text = "";
         }
 
@@ -58,7 +62,7 @@ namespace QuanLyThuVien
             txtSoTrang.Enabled = true;
             txtSoLuong.Enabled = true;
             txtSoSachHong.Enabled = true;
-            mtbNgayNhap.Enabled = true;
+            dtpNgayNhap.Enabled = true;
             rtbGhiChu.Enabled = true;
             btnThem.Enabled = false;
             btnSua.Enabled = false;
@@ -78,7 +82,7 @@ namespace QuanLyThuVien
             txtSoTrang.Enabled = true;
             txtSoLuong.Enabled = true;
             txtSoSachHong.Enabled = true;
-            mtbNgayNhap.Enabled = true;
+            dtpNgayNhap.Enabled = true;
             rtbGhiChu.Enabled = true;
             btnThem.Enabled = false;
             btnSua.Enabled = false;
@@ -98,19 +102,30 @@ namespace QuanLyThuVien
             txtSoTrang.Text = dgvSach.Rows[e.RowIndex].Cells[6].Value.ToString();
             txtSoLuong.Text = dgvSach.Rows[e.RowIndex].Cells[7].Value.ToString();
             txtSoSachHong.Text = dgvSach.Rows[e.RowIndex].Cells[8].Value.ToString();
-            mtbNgayNhap.Text = dgvSach.Rows[e.RowIndex].Cells[9].Value.ToString();
+            dtpNgayNhap.Text = dgvSach.Rows[e.RowIndex].Cells[9].Value.ToString();
             rtbGhiChu.Text = dgvSach.Rows[e.RowIndex].Cells[10].Value.ToString();
             btnSua.Enabled = true;
             btnXoa.Enabled = true;
+            action = "update";
         }
 
         private void btnXoa_Click(object sender, EventArgs e)
         {
             if (MessageBox.Show("Bạn có muốn xóa không?(Y/N)", "Delete", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
-                sachSer.deleteModel(txtMaSach.Text);
-                sachSer.getAll(dgvSach);
-                MessageBox.Show("Xóa thành công");
+                try
+                {
+                    sachSer.deleteModel(txtMaSach.Text);
+                    MessageBox.Show("Xóa thành công");
+                    clearText();
+                    btnSua.Enabled = false;
+                    btnXoa.Enabled = false;
+                    sachSer.getAll(dgvSach);
+                }
+                catch
+                {
+                    MessageBox.Show("Phải xóa những thông tin liên quan đến sách này trước");
+                };
             }
         }
 
@@ -131,50 +146,41 @@ namespace QuanLyThuVien
 
         private void btnLuu_Click(object sender, EventArgs e)
         {
-            sachMod.MaSach = txtMaSach.Text;
-            sachMod.TenSach = txtTenSach.Text;
-            sachMod.TacGia = txtTacGia.Text;
-            sachMod.NhaXuatBan = txtNhaXuatBan.Text;
-            sachMod.MaLinhVuc = cbMaLinhVuc.Text;
-            sachMod.NamXuatBan = txtNamXuatBan.Text;
-            sachMod.SoTrang = Convert.ToInt32(txtSoTrang.Text);
-            sachMod.SoLuong = Convert.ToInt32(txtSoLuong.Text);
-            sachMod.SoSachHong = Convert.ToInt32(txtSoSachHong.Text);
-            sachMod.NgayNhap = mtbNgayNhap.Text;
-            sachMod.GhiChu = rtbGhiChu.Text;
-            if (action == "add")
+            if (txtMaSach.Text == "" || txtTenSach.Text == "" || txtTacGia.Text == "" || txtNhaXuatBan.Text == "" || cbMaLinhVuc.Text == "" || txtNamXuatBan.Text == "" || txtSoTrang.Text == "" || txtSoLuong.Text == "")
             {
-                Object obj = sachSer.getModel(txtMaSach.Text);
-                if (obj != null)
-                {
-                    MessageBox.Show("Mã bị trùng");
-                }
-                else
-                {
-                    sachSer.createModel(sachMod);             
-                    MessageBox.Show("Lưu thành công");
-                    sachSer.getAll(dgvSach);
-                    clearText();
-                    txtMaSach.Enabled = false;
-                    txtTenSach.Enabled = false;
-                    txtTacGia.Enabled = false;
-                    txtNhaXuatBan.Enabled = false;
-                    cbMaLinhVuc.Enabled = false;
-                    txtNamXuatBan.Enabled = false;
-                    txtSoTrang.Enabled = false;
-                    txtSoLuong.Enabled = false;
-                    txtSoSachHong.Enabled = false;
-                    mtbNgayNhap.Enabled = false;
-                    rtbGhiChu.Enabled = false;
-                    btnThem.Enabled = true;
-                    btnSua.Enabled = true;
-                    btnXoa.Enabled = true;
-                    btnLuu.Enabled = false;
-                }
+                MessageBox.Show("Mời nhập đầy đủ thông tin");
             }
             else
             {
-                sachSer.updateModel(sachMod);
+
+                sachMod.MaSach = txtMaSach.Text;
+                sachMod.TenSach = txtTenSach.Text;
+                sachMod.TacGia = txtTacGia.Text;
+                sachMod.NhaXuatBan = txtNhaXuatBan.Text;
+                sachMod.MaLinhVuc = cbMaLinhVuc.Text;
+                sachMod.NamXuatBan = txtNamXuatBan.Text;
+                sachMod.SoTrang = Convert.ToInt32(txtSoTrang.Text);
+                sachMod.SoLuong = Convert.ToInt32(txtSoLuong.Text);
+                sachMod.SoSachHong = Convert.ToInt32(txtSoSachHong.Text);
+                sachMod.NgayNhap = dtpNgayNhap.Text;
+                sachMod.GhiChu = rtbGhiChu.Text;
+                if (action == "add")
+                {
+                    Object obj = sachSer.getModel(txtMaSach.Text);
+                    if (obj != null)
+                    {
+                        MessageBox.Show("Mã bị trùng");
+                        return;
+                    }
+                    else
+                    {
+                        sachSer.createModel(sachMod);             
+                    }
+                }
+                else
+                {
+                    sachSer.updateModel(sachMod);
+                }
                 MessageBox.Show("Lưu thành công");
                 sachSer.getAll(dgvSach);
                 clearText();
@@ -187,11 +193,11 @@ namespace QuanLyThuVien
                 txtSoTrang.Enabled = false;
                 txtSoLuong.Enabled = false;
                 txtSoSachHong.Enabled = false;
-                mtbNgayNhap.Enabled = false;
+                dtpNgayNhap.Enabled = false;
                 rtbGhiChu.Enabled = false;
                 btnThem.Enabled = true;
-                btnSua.Enabled = true;
-                btnXoa.Enabled = true;
+                btnSua.Enabled = false;
+                btnXoa.Enabled = false;
                 btnLuu.Enabled = false;
             }
         }

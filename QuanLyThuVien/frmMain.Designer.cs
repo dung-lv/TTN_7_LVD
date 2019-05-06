@@ -361,7 +361,7 @@
             // 
             this.label0.AutoSize = true;
             this.label0.Font = new System.Drawing.Font("Times New Roman", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label0.ForeColor = System.Drawing.SystemColors.Highlight;
+            this.label0.ForeColor = System.Drawing.Color.ForestGreen;
             this.label0.Location = new System.Drawing.Point(318, 18);
             this.label0.Name = "label0";
             this.label0.Size = new System.Drawing.Size(328, 46);

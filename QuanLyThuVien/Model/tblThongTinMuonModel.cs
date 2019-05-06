@@ -11,7 +11,7 @@ namespace QuanLyThuVien.Model
 
         public string MaSach { get; set; }
 
-        public int SoPhieuMuon { get; set; }
+        public int SoLuongMuon { get; set; }
 
         public string NgayMuon { get; set; }
 
@@ -25,11 +25,11 @@ namespace QuanLyThuVien.Model
 
         public tblThongTinMuonModel() { }
 
-        public tblThongTinMuonModel(string madg, string mas, int sophieu, string ngaymuon, string ngaytra, string xacnhan, string ghichu)
+        public tblThongTinMuonModel(string madg, string mas, int soluongmuon, string ngaymuon, string ngaytra, string xacnhan, string ghichu)
         {
             this.MaDocGia = madg;
             this.MaSach = mas;
-            this.SoPhieuMuon = sophieu;
+            this.SoLuongMuon = soluongmuon;
             this.NgayMuon = ngaymuon;
             this.NgayTra = ngaytra;
             this.XacNhanTra = xacnhan;

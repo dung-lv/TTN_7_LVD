@@ -23,6 +23,12 @@ namespace QuanLyThuVien.Service
             return connectSer.getValueModel(sql);
         }
 
+        public Object getSoLuongSach(string maSach)
+        {
+            string sql = "select SOLUONG from tblSach where MASACH='" + maSach + "'";
+            return connectSer.getValueModel(sql);
+        }
+
         public void getAll(DataGridView dgv)
         {
             string sql = "select MASACH,TENSACH,TACGIA,NHAXUATBAN,MALV,NAMXB,SOTRANG,SOLUONG,SOSACHHONG,NGAYNHAP,GHICHU from tblSach";
@@ -38,6 +44,20 @@ namespace QuanLyThuVien.Service
         public void updateModel(tblSachModel sach)
         {
             string sql = "Update tblSach set TENSACH=N'" + sach.TenSach + "',TACGIA=N'" + sach.TacGia + "',NHAXUATBAN=N'" + sach.NhaXuatBan + "',MALV='" + sach.MaLinhVuc + "',NAMXB='" + sach.NamXuatBan + "',SOTRANG='" + sach.SoTrang + "',SOLUONG='" + sach.SoLuong + "',SOSACHHONG='" + sach.SoSachHong + "',NGAYNHAP='" + sach.NgayNhap + "',GHICHU=N'" + sach.GhiChu + "' where MASACH='" + sach.MaSach + "'";
+            connectSer.ThucThiSQLTheoPhiKetNoi(sql);
+        }
+
+        public void updateModelByCondition(string maSach, Boolean xacNhan)
+        {
+            int soluong = Convert.ToInt32(getSoLuongSach(maSach));
+            string sql = "";
+            if (xacNhan)
+            {
+                sql = "Update tblSach set SOLUONG='" + (soluong + 1) + "' where MASACH='" + maSach + "'";
+            }else
+            {
+                sql = "Update tblSach set SOLUONG='" + (soluong - 1) + "' where MASACH='" + maSach + "'";
+            }
             connectSer.ThucThiSQLTheoPhiKetNoi(sql);
         }
 

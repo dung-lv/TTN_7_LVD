@@ -65,6 +65,18 @@ namespace QuanLyThuVien.Service
             }
             NgatKetNoi();
         }
+        public void LoadDataListBox(ListBox lb, string strSelect)
+        {
+            lb.Items.Clear();
+            Connect();
+            sqlCom = new SqlCommand(strSelect, sqlCon);
+            sqlRea = sqlCom.ExecuteReader();
+            while (sqlRea.Read())
+            {
+                lb.Items.Add(sqlRea[0].ToString());
+            }
+            NgatKetNoi();
+        }
         public void LoadDataLabel(Label lb, string strSelect)
         {
             lb.Text = "";

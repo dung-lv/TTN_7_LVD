@@ -180,9 +180,10 @@
             // label1
             // 
             this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.SystemColors.Control;
             this.label1.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label1.Location = new System.Drawing.Point(216, 27);
+            this.label1.ForeColor = System.Drawing.Color.ForestGreen;
+            this.label1.Location = new System.Drawing.Point(208, 18);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(374, 32);
@@ -230,18 +231,21 @@
             // 
             // MALV
             // 
-            this.MALV.DataPropertyName = "MaLv";
+            this.MALV.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.MALV.DataPropertyName = "MaLV";
             this.MALV.HeaderText = "Mã lĩnh vực";
             this.MALV.Name = "MALV";
             // 
             // TENLV
             // 
+            this.TENLV.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.TENLV.DataPropertyName = "TenLv";
             this.TENLV.HeaderText = "Tên lĩnh vực";
             this.TENLV.Name = "TENLV";
             // 
             // GHICHU
             // 
+            this.GHICHU.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.GHICHU.DataPropertyName = "GhiChu";
             this.GHICHU.HeaderText = "Ghi chú";
             this.GHICHU.Name = "GHICHU";
@@ -258,7 +262,7 @@
             this.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.Name = "frmCapNhatLinhVuc";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "capnhatLv";
+            this.Text = "Cập nhật Lĩnh vực";
             this.Load += new System.EventHandler(this.capNhatLinhVuc_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvLinhVuc)).EndInit();
             this.groupBox1.ResumeLayout(false);

@@ -57,6 +57,9 @@ namespace QuanLyThuVien
                 {
                     linhVucSer.deleteModel(txtMaLinhVuc.Text);
                     MessageBox.Show("Xóa thành công");
+                    clearText();
+                    btnSua.Enabled = false;
+                    btnXoa.Enabled = false;
                     linhVucSer.getAll(dgvLinhVuc);
                 }
                 catch
@@ -74,6 +77,7 @@ namespace QuanLyThuVien
             rtbGhiChu.Text = dgvLinhVuc.Rows[e.RowIndex].Cells[2].Value.ToString();
             btnSua.Enabled = true;
             btnXoa.Enabled = true;
+            action = "update";
         }
 
         private void btnSua_Click(object sender, EventArgs e)
@@ -90,34 +94,32 @@ namespace QuanLyThuVien
 
         private void btnLuu_Click(object sender, EventArgs e)
         {
-            linhVucMod.MaLinhVuc = txtMaLinhVuc.Text;
-            linhVucMod.TenLinhVuc = txtTenLinhVuc.Text;
-            linhVucMod.GhiChu = rtbGhiChu.Text;
-            if(action == "add")
+            if (txtMaLinhVuc.Text == "" || txtTenLinhVuc.Text == "")
             {
-                Object obj = linhVucSer.getModel(txtMaLinhVuc.Text);
-                if (obj != null)
-                {
-                    MessageBox.Show("Mã bị trùng");
-                }
-                else
-                {
-                    linhVucSer.createModel(linhVucMod);
-                    MessageBox.Show("Lưu thành công");
-                    linhVucSer.getAll(dgvLinhVuc);
-                    clearText();
-                    txtMaLinhVuc.Enabled = false;
-                    txtTenLinhVuc.Enabled = false;
-                    rtbGhiChu.Enabled = false;
-                    btnThem.Enabled = true;
-                    btnSua.Enabled = true;
-                    btnXoa.Enabled = true;
-                    btnLuu.Enabled = false;
-                }
+                MessageBox.Show("Mời nhập đầy đủ thông tin");
             }
             else
             {
-                linhVucSer.updateModel(linhVucMod);
+                linhVucMod.MaLinhVuc = txtMaLinhVuc.Text;
+                linhVucMod.TenLinhVuc = txtTenLinhVuc.Text;
+                linhVucMod.GhiChu = rtbGhiChu.Text;
+                if (action == "add")
+                {
+                    Object obj = linhVucSer.getModel(txtMaLinhVuc.Text);
+                    if (obj != null)
+                    {
+                        MessageBox.Show("Mã bị trùng");
+                        return;
+                    }
+                    else
+                    {
+                        linhVucSer.createModel(linhVucMod);
+                    }
+                }
+                else
+                {
+                    linhVucSer.updateModel(linhVucMod);
+                }
                 MessageBox.Show("Lưu thành công");
                 linhVucSer.getAll(dgvLinhVuc);
                 clearText();
@@ -125,8 +127,8 @@ namespace QuanLyThuVien
                 txtTenLinhVuc.Enabled = false;
                 rtbGhiChu.Enabled = false;
                 btnThem.Enabled = true;
-                btnSua.Enabled = true;
-                btnXoa.Enabled = true;
+                btnSua.Enabled = false;
+                btnXoa.Enabled = false;
                 btnLuu.Enabled = false;
             }
         }

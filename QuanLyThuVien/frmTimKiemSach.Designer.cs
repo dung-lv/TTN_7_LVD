@@ -32,7 +32,6 @@
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.btnThoatCoBan = new System.Windows.Forms.Button();
-            this.btnTimCoBan = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
             this.dgvSachCoBan = new System.Windows.Forms.DataGridView();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
@@ -67,19 +66,18 @@
             // groupBox4
             // 
             this.groupBox4.Controls.Add(this.btnThoatCoBan);
-            this.groupBox4.Controls.Add(this.btnTimCoBan);
             this.groupBox4.Location = new System.Drawing.Point(752, 12);
             this.groupBox4.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.Padding = new System.Windows.Forms.Padding(4);
-            this.groupBox4.Size = new System.Drawing.Size(253, 140);
+            this.groupBox4.Size = new System.Drawing.Size(253, 94);
             this.groupBox4.TabIndex = 6;
             this.groupBox4.TabStop = false;
             // 
             // btnThoatCoBan
             // 
             this.btnThoatCoBan.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnThoatCoBan.Location = new System.Drawing.Point(65, 80);
+            this.btnThoatCoBan.Location = new System.Drawing.Point(82, 33);
             this.btnThoatCoBan.Margin = new System.Windows.Forms.Padding(4);
             this.btnThoatCoBan.Name = "btnThoatCoBan";
             this.btnThoatCoBan.Size = new System.Drawing.Size(100, 33);
@@ -87,18 +85,6 @@
             this.btnThoatCoBan.Text = "Thoát";
             this.btnThoatCoBan.UseVisualStyleBackColor = true;
             this.btnThoatCoBan.Click += new System.EventHandler(this.btnThoatCoBan_Click);
-            // 
-            // btnTimCoBan
-            // 
-            this.btnTimCoBan.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnTimCoBan.Location = new System.Drawing.Point(65, 23);
-            this.btnTimCoBan.Margin = new System.Windows.Forms.Padding(4);
-            this.btnTimCoBan.Name = "btnTimCoBan";
-            this.btnTimCoBan.Size = new System.Drawing.Size(100, 36);
-            this.btnTimCoBan.TabIndex = 4;
-            this.btnTimCoBan.Text = "Tìm";
-            this.btnTimCoBan.UseVisualStyleBackColor = true;
-            this.btnTimCoBan.Click += new System.EventHandler(this.btnTimCoBan_Click);
             // 
             // label6
             // 
@@ -133,7 +119,7 @@
             this.groupBox1.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Padding = new System.Windows.Forms.Padding(4);
-            this.groupBox1.Size = new System.Drawing.Size(716, 146);
+            this.groupBox1.Size = new System.Drawing.Size(716, 127);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             // 
@@ -141,7 +127,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(47, 94);
+            this.label5.Location = new System.Drawing.Point(44, 79);
             this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(77, 17);
@@ -150,16 +136,17 @@
             // 
             // txtTuKhoa
             // 
-            this.txtTuKhoa.Location = new System.Drawing.Point(211, 94);
+            this.txtTuKhoa.Location = new System.Drawing.Point(208, 79);
             this.txtTuKhoa.Margin = new System.Windows.Forms.Padding(4);
             this.txtTuKhoa.Name = "txtTuKhoa";
-            this.txtTuKhoa.Size = new System.Drawing.Size(332, 22);
+            this.txtTuKhoa.Size = new System.Drawing.Size(420, 22);
             this.txtTuKhoa.TabIndex = 6;
+            this.txtTuKhoa.TextChanged += new System.EventHandler(this.txtTuKhoa_TextChanged);
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(47, 101);
+            this.label4.Location = new System.Drawing.Point(44, 86);
             this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(0, 17);
@@ -169,7 +156,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(47, 41);
+            this.label3.Location = new System.Drawing.Point(44, 26);
             this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(119, 17);
@@ -185,10 +172,10 @@
             "TACGIA",
             "MaLV",
             "NAMXB"});
-            this.cbLuaChon.Location = new System.Drawing.Point(211, 38);
+            this.cbLuaChon.Location = new System.Drawing.Point(208, 23);
             this.cbLuaChon.Margin = new System.Windows.Forms.Padding(4);
             this.cbLuaChon.Name = "cbLuaChon";
-            this.cbLuaChon.Size = new System.Drawing.Size(332, 24);
+            this.cbLuaChon.Size = new System.Drawing.Size(420, 24);
             this.cbLuaChon.TabIndex = 0;
             // 
             // tabControl1
@@ -228,7 +215,6 @@
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.GroupBox groupBox4;
         private System.Windows.Forms.Button btnThoatCoBan;
-        private System.Windows.Forms.Button btnTimCoBan;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.DataGridView dgvSachCoBan;
         private System.Windows.Forms.GroupBox groupBox1;
