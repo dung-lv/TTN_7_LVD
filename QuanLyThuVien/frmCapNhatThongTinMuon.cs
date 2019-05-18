@@ -35,6 +35,28 @@ namespace QuanLyThuVien
             connectSer.LoadDataCombobox(cbTenDocGia, "select HOTEN from tblDocGia");
             connectSer.LoadDataListBox(lbMaSach, "select MASACH from tblSach");
             thongTinMuonSer.getAll(dgvThongTinMuon);
+
+            for (int i = 0; i < (dgvThongTinMuon.Rows.Count - 1); i++)
+            {
+                if (this.dgvThongTinMuon.Rows[i].Cells[0].Value.ToString() != string.Empty)
+                {
+                    try
+                    {
+                        string status = this.dgvThongTinMuon.Rows[i].Cells[5].Value.ToString();
+                        string deadline = this.dgvThongTinMuon.Rows[i].Cells[4].Value.ToString();
+                        DateTime result = DateTime.ParseExact(deadline, "dd-MM-yyyy", CultureInfo.InvariantCulture);
+                        DateTime localDate = DateTime.Now;
+                        if (result.Date < localDate.Date && status.Equals("Chưa trả"))
+                        {
+                            thongTinMuonSer.updateDeadline(this.dgvThongTinMuon.Rows[i].Cells[0].Value.ToString());
+                        }
+                    }
+                    catch (Exception Ee)
+                    {
+                        MessageBox.Show(Ee.ToString());
+                    }
+                }
+            }
         }
 
         private void clearText()
@@ -66,7 +88,7 @@ namespace QuanLyThuVien
         {
             if (MessageBox.Show("Bạn có muốn xóa không?(Y/N)", "Delete", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
-                thongTinMuonSer.deleteModel(cbMaDocGia.Text, lbMaSach.SelectedItem.ToString(), txtSoLuongMuon.Text);
+                thongTinMuonSer.deleteModel(cbMaDocGia.Text, lbMaSach.SelectedItem.ToString(), Convert.ToInt32(txtSoLuongMuon.Text));
                 MessageBox.Show("Xóa thành công");
                 clearText();
                 btnSua.Enabled = false;
@@ -81,8 +103,11 @@ namespace QuanLyThuVien
             cbMaDocGia.Text = dgvThongTinMuon.Rows[e.RowIndex].Cells[0].Value.ToString();
             lbMaSach.SelectedItem = dgvThongTinMuon.Rows[e.RowIndex].Cells[1].Value.ToString();
             txtSoLuongMuon.Text = dgvThongTinMuon.Rows[e.RowIndex].Cells[2].Value.ToString();
-            dtpNgayMuon.Text = dgvThongTinMuon.Rows[e.RowIndex].Cells[3].Value.ToString();
-            dtpNgayTra.Text = dgvThongTinMuon.Rows[e.RowIndex].Cells[4].Value.ToString();
+
+            string dateMuon = dgvThongTinMuon.Rows[e.RowIndex].Cells[3].Value.ToString();
+            dtpNgayMuon.Value = DateTime.ParseExact(dateMuon, "dd-MM-yyyy", CultureInfo.InvariantCulture);
+            string dateTra = dgvThongTinMuon.Rows[e.RowIndex].Cells[4].Value.ToString();
+            dtpNgayTra.Value = DateTime.ParseExact(dateTra, "dd-MM-yyyy", CultureInfo.InvariantCulture);
             cbXacNhan.Text = dgvThongTinMuon.Rows[e.RowIndex].Cells[5].Value.ToString();
             rtbGhiChu.Text = dgvThongTinMuon.Rows[e.RowIndex].Cells[6].Value.ToString();
             btnLuu.Enabled = false;
@@ -119,7 +144,7 @@ namespace QuanLyThuVien
                 {
                     DateTime ngayMuon = Convert.ToDateTime(this.dtpNgayMuon.Text.Trim(), new CultureInfo("en-GB"));
                     DateTime ngayTra = Convert.ToDateTime(this.dtpNgayTra.Text.Trim(), new CultureInfo("en-GB"));
-                    if(ngayMuon >= ngayTra)
+                    if (ngayMuon >= ngayTra)
                     {
                         MessageBox.Show("Ngày trả sách phải lớn hơn ngày mượn sách");
                         return;
@@ -142,6 +167,7 @@ namespace QuanLyThuVien
                             {
                                 muonMod.MaSach = result.ToString();
                                 muonMod.SoLuongMuon = lbMaSach.SelectedItems.Count;
+                                muonMod.XacNhanTra = "Chưa trả";
                                 thongTinMuonSer.createModel(muonMod);
                             }
                         }

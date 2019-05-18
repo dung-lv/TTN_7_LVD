@@ -8,6 +8,7 @@ using System.Text;
 using System.Windows.Forms;
 using QuanLyThuVien.Service;
 using QuanLyThuVien.Model;
+using System.Globalization;
 
 namespace QuanLyThuVien
 {
@@ -29,7 +30,7 @@ namespace QuanLyThuVien
             dtpNgaySinh.CustomFormat = "dd-MM-yyyy";
 
             connectSer.Connect();
-            docGiaSer.getAll(dgvDocGia);           
+            docGiaSer.getAll(dgvDocGia);
         }
 
         private void clearText()
@@ -59,7 +60,7 @@ namespace QuanLyThuVien
             btnSua.Enabled = false;
             btnXoa.Enabled = false;
             btnLuu.Enabled = true;
-            action = "add";        
+            action = "add";
         }
 
         private void btnXoa_Click(object sender, EventArgs e)
@@ -86,7 +87,8 @@ namespace QuanLyThuVien
         {
             txtMaDocGia.Text = dgvDocGia.Rows[e.RowIndex].Cells[0].Value.ToString();
             txtHoTen.Text = dgvDocGia.Rows[e.RowIndex].Cells[1].Value.ToString();
-            dtpNgaySinh.Text = dgvDocGia.Rows[e.RowIndex].Cells[2].Value.ToString();
+            string date = dgvDocGia.Rows[e.RowIndex].Cells[2].Value.ToString();
+            dtpNgaySinh.Value = DateTime.ParseExact(date, "dd-MM-yyyy", CultureInfo.InvariantCulture);
             cbGioiTinh.Text = dgvDocGia.Rows[e.RowIndex].Cells[3].Value.ToString();
             txtLop.Text = dgvDocGia.Rows[e.RowIndex].Cells[4].Value.ToString();
             txtDiaChi.Text = dgvDocGia.Rows[e.RowIndex].Cells[5].Value.ToString();
@@ -111,7 +113,7 @@ namespace QuanLyThuVien
             btnSua.Enabled = false;
             btnXoa.Enabled = false;
             btnLuu.Enabled = true;
-            action = "update";              
+            action = "update";
         }
 
         bool IsValidEmail(string email)
@@ -129,18 +131,18 @@ namespace QuanLyThuVien
 
         private void btnLuu_Click(object sender, EventArgs e)
         {
-            if(txtMaDocGia.Text == "" || txtHoTen.Text == "" || cbGioiTinh.Text == "" || txtLop.Text == "" || txtDiaChi.Text == "" || txtEmail.Text == "")
+            if (txtMaDocGia.Text == "" || txtHoTen.Text == "" || cbGioiTinh.Text == "" || txtLop.Text == "" || txtDiaChi.Text == "" || txtEmail.Text == "")
             {
                 MessageBox.Show("Mời nhập đầy đủ thông tin");
             }
             else
             {
                 docGiaMod.MaDocGia = txtMaDocGia.Text;
-                docGiaMod.HoTen = txtHoTen.Text;
+                docGiaMod.HoTen = CommonService.ValidateString(txtHoTen.Text);
                 docGiaMod.NgaySinh = dtpNgaySinh.Text;
                 docGiaMod.GioiTinh = cbGioiTinh.Text;
                 docGiaMod.Lop = txtLop.Text;
-                docGiaMod.DiaChi = txtDiaChi.Text;
+                docGiaMod.DiaChi = CommonService.ValidateString(txtDiaChi.Text);
                 if (IsValidEmail(txtEmail.Text))
                 {
                     docGiaMod.Email = txtEmail.Text;
@@ -182,7 +184,12 @@ namespace QuanLyThuVien
                 {
                     MessageBox.Show("Email không đúng định dạng");
                 }
-            }           
+            }
+        }
+
+        private void txtTuKhoa_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

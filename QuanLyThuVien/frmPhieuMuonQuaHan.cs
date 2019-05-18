@@ -11,32 +11,20 @@ using QuanLyThuVien.Model;
 
 namespace QuanLyThuVien
 {
-    public partial class frmTimKiemThongTinMuon : Form
+    public partial class frmPhieuMuonQuaHan : Form
     {
         private ConnectService connectSer = new ConnectService();
-        public frmTimKiemThongTinMuon()
+        public frmPhieuMuonQuaHan()
         {
             InitializeComponent();
             connectSer.Connect();
         }
 
         private ThongTinMuonService thongTinMuonSer = new ThongTinMuonService();
-        private tblThongTinMuonModel muonMod = new tblThongTinMuonModel();
-
 
         private void frmTimKiemThongTinMuon_Load(object sender, EventArgs e)
         {
-            thongTinMuonSer.getAll(dgvMuonSachCoBan);
-        }
-
-        private void btnThoatCoBan_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
-
-        private void txtTuKhoa_TextChanged(object sender, EventArgs e)
-        {
-            thongTinMuonSer.searchModelBasic(cbLuaChon.Text, txtTuKhoa.Text, dgvMuonSachCoBan);
+            thongTinMuonSer.getListDeadline(dgvPhieuMuonQuaHan);
         }
     }
 }

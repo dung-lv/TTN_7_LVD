@@ -26,9 +26,9 @@ namespace QuanLyThuVien
         private void capNhatLinhVuc_Load(object sender, EventArgs e)
         {
             connectSer.Connect();
-            linhVucSer.getAll(dgvLinhVuc);            
+            linhVucSer.getAll(dgvLinhVuc);
         }
-        
+
         private void clearText()
         {
             txtMaLinhVuc.Text = "";
@@ -101,7 +101,7 @@ namespace QuanLyThuVien
             else
             {
                 linhVucMod.MaLinhVuc = txtMaLinhVuc.Text;
-                linhVucMod.TenLinhVuc = txtTenLinhVuc.Text;
+                linhVucMod.TenLinhVuc = CommonService.ValidateString(txtTenLinhVuc.Text);
                 linhVucMod.GhiChu = rtbGhiChu.Text;
                 if (action == "add")
                 {
@@ -131,6 +131,11 @@ namespace QuanLyThuVien
                 btnXoa.Enabled = false;
                 btnLuu.Enabled = false;
             }
+        }
+
+        private void txtTuKhoa_TextChanged(object sender, EventArgs e)
+        {
+            linhVucSer.searchModelBasic(cbLuaChon.Text, txtTuKhoa.Text, dgvLinhVuc);
         }
     }
 }

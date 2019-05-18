@@ -62,14 +62,14 @@ namespace QuanLyThuVien
                     MessageBox.Show("Đăng nhập thành công");
                     tenTaiKhoan = txtTenTaiKhoan.Text;
                     matKhauCu = txtMatKhau.Text;
-                    QuanLyHeThongTSMI.Enabled = true;
+                    DoiMatKhauTSMI.Enabled = true;
                     CapNhatTSMI.Enabled = true;
                     TimKiemTSMI.Enabled = true;
                     txtTenTaiKhoan.Text = "";
                     txtMatKhau.Text = "";
                     gbDangNhap.Enabled = false;
                 }
-            }  
+            }
         }
 
         private void frmMain_FormClosing(object sender, FormClosingEventArgs e)
@@ -83,8 +83,8 @@ namespace QuanLyThuVien
         private void ThoatTSMI_Click(object sender, EventArgs e)
         {
             this.Close();
-        }       
-        
+        }
+
         private void TaoTaiKhoanTSMI_Click(object sender, EventArgs e)
         {
             frmTaoTaiKhoan frmTTK = new frmTaoTaiKhoan();
@@ -100,6 +100,10 @@ namespace QuanLyThuVien
         private void DangNhapTSMI_Click(object sender, EventArgs e)
         {
             gbDangNhap.Enabled = true;
+            CapNhatTSMI.Enabled = false;
+            TimKiemTSMI.Enabled = false;
+            txtTenTaiKhoan.Text = "";
+            txtMatKhau.Text = "";
         }
 
         private void CapNhatSachTSMI_Click(object sender, EventArgs e)
@@ -120,24 +124,13 @@ namespace QuanLyThuVien
             frmCapNhatLinhVuc frmCNLV = new frmCapNhatLinhVuc();
             frmCNLV.Show();
         }
-     
+
         private void CapNhatThongTinMuonTSMI_Click(object sender, EventArgs e)
         {
             frmCapNhatThongTinMuon frmCNTTM = new frmCapNhatThongTinMuon();
             frmCNTTM.Show();
         }
 
-        private void TimKiemSachTSMI_Click(object sender, EventArgs e)
-        {
-            frmTimKiemSach frmTKS = new frmTimKiemSach();
-            frmTKS.Show();
-        }
-
-        private void TimKiemDocGiaTSMI_Click(object sender, EventArgs e)
-        {
-            frmTimkiemDocGia frmTKDG = new frmTimkiemDocGia();
-            frmTKDG.Show();
-        }
 
         private void TroGiupTSMI_Click(object sender, EventArgs e)
         {
@@ -147,8 +140,14 @@ namespace QuanLyThuVien
 
         private void TimKiemTTMuonTSMI_Click(object sender, EventArgs e)
         {
-            frmTimKiemThongTinMuon frmTKTTM = new frmTimKiemThongTinMuon();
+            frmPhieuMuonQuaHan frmTKTTM = new frmPhieuMuonQuaHan();
             frmTKTTM.Show();
+        }
+
+        private void TimKiemTSMI_Click(object sender, EventArgs e)
+        {
+            frmPhieuMuonQuaHan frmPMQH = new frmPhieuMuonQuaHan();
+            frmPMQH.Show();
         }
 
         private void timer1_Tick(object sender, EventArgs e)

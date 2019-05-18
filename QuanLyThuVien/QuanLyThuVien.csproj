@@ -73,13 +73,13 @@
     <Compile Include="frmHelp.Designer.cs">
       <DependentUpon>frmHelp.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmTimKiemThongTinMuon.cs">
+    <Compile Include="frmPhieuMuonQuaHan.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmTimKiemThongTinMuon.Designer.cs">
-      <DependentUpon>frmTimKiemThongTinMuon.cs</DependentUpon>
+    <Compile Include="frmPhieuMuonQuaHan.Designer.cs">
+      <DependentUpon>frmPhieuMuonQuaHan.cs</DependentUpon>
     </Compile>
-    <Compile Include="Service\ConnectService.cs" />
+    <Compile Include="Service\CommonService.cs" />
     <Compile Include="frmDoiMatKhau.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -114,12 +114,6 @@
     <Compile Include="frmMain.Designer.cs">
       <DependentUpon>frmMain.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmTimKiemSach.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="frmTimKiemSach.Designer.cs">
-      <DependentUpon>frmTimKiemSach.cs</DependentUpon>
-    </Compile>
     <Compile Include="frmCapNhatSach.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -128,10 +122,11 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Service\SachService.cs" />
-    <Compile Include="Service\LinhVucService.cs" />
+    <Compile Include="Service\ConnectService.cs" />
     <Compile Include="Service\DocGiaService.cs" />
+    <Compile Include="Service\LinhVucService.cs" />
     <Compile Include="Service\NhanVienService.cs" />
+    <Compile Include="Service\SachService.cs" />
     <Compile Include="Service\ThongTinMuonService.cs" />
     <EmbeddedResource Include="frmCapnhatDocGia.resx">
       <DependentUpon>frmCapnhatDocGia.cs</DependentUpon>
@@ -164,21 +159,13 @@
       <DependentUpon>frmCapNhatThongTinMuon.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmTimKiemSach.resx">
-      <DependentUpon>frmTimKiemSach.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="frmTimKiemThongTinMuon.resx">
-      <DependentUpon>frmTimKiemThongTinMuon.cs</DependentUpon>
+    <EmbeddedResource Include="frmPhieuMuonQuaHan.resx">
+      <DependentUpon>frmPhieuMuonQuaHan.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="frmTimkiemDocGia.resx">
-      <DependentUpon>frmTimkiemDocGia.cs</DependentUpon>
-      <SubType>Designer</SubType>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -188,12 +175,6 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
-    </Compile>
-    <Compile Include="frmTimkiemDocGia.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="frmTimkiemDocGia.Designer.cs">
-      <DependentUpon>frmTimkiemDocGia.cs</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

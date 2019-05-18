@@ -23,7 +23,7 @@ namespace QuanLyThuVien
 
         private void btnDongY_Click(object sender, EventArgs e)
         {
-            if(txtMatKhauCu.Text == "" || txtMatKhauMoi.Text == "" || txtXacNhan.Text == "")
+            if (txtMatKhauCu.Text == "" || txtMatKhauMoi.Text == "" || txtXacNhan.Text == "")
             {
                 MessageBox.Show("Xin hãy nhập đầy đủ thông tin");
             }
@@ -32,25 +32,25 @@ namespace QuanLyThuVien
                 if (txtMatKhauMoi.Text.Length < 5)
                 {
                     MessageBox.Show("Mật khẩu mới quá ngắn");
-                }                    
+                }
                 else
                 {
                     if (txtMatKhauMoi.Text.Length > 30)
                     {
                         MessageBox.Show("Mật khẩu mới quá dài");
-                    }                        
+                    }
                     else
                     {
                         if (txtMatKhauMoi.Text != txtXacNhan.Text)
                         {
                             MessageBox.Show("Mật khẩu mới không trùng khớp hãy nhập lại");
-                        }                            
+                        }
                         else
                         {
                             if (txtMatKhauCu.Text != frmMain.matKhauCu)
                             {
                                 MessageBox.Show("Mật khẩu cũ sai hãy nhập lại");
-                            }                               
+                            }
                             else
                             {
                                 nhanvienMod.MatKhau = txtMatKhauMoi.Text;
@@ -67,7 +67,7 @@ namespace QuanLyThuVien
                         }
                     }
                 }
-            } 
+            }
         }
 
         private void btnThoat_Click(object sender, EventArgs e)

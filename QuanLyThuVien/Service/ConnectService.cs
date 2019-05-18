@@ -19,13 +19,14 @@ namespace QuanLyThuVien.Service
         DataTable dTable = new DataTable("DB");
 
         //Phương thức kết nối tới CSDL SQL Server
-        public void Connect()
+        public SqlConnection Connect()
         {
             sqlCon = new SqlConnection(strConnect);
             if (sqlCon.State == ConnectionState.Closed)
             {
                 sqlCon.Open();
             }
+            return sqlCon;
         }
         //Phương thức đóng kết nối tới CSDL
         private void NgatKetNoi()
@@ -99,15 +100,13 @@ namespace QuanLyThuVien.Service
             sqlAdap.Fill(dTable);
             dg.DataSource = dTable;
         }
-        //public void LoadData1Datagirdview(DataGridView DG, string sql,string Bang)
-        //{
 
-        //}
-        public Object getValueModel(string sql) //lay gia tri cua cot dau tien trong bang 
+        public Object getValueModel(string USP, string dk, string ma) //lay gia tri cua cot dau tien trong bang 
         {
             sqlCom = new SqlCommand();
-            sqlCom.CommandText = sql;
-            sqlCom.CommandType = CommandType.Text;
+            sqlCom.CommandType = CommandType.StoredProcedure;
+            sqlCom.CommandText = USP;
+            sqlCom.Parameters.Add(dk, SqlDbType.VarChar).Value = ma;
             sqlCom.Connection = sqlCon;
             //Chi can lay ve gia tri cua mot truong thoi thi dung pt nao ? -ExecuteScalar
             Object obj = sqlCom.ExecuteScalar(); //neu co loi thi phai xem lai cua lenh SQL o ben kia

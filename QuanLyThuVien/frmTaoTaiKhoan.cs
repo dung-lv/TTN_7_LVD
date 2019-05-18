@@ -32,20 +32,20 @@ namespace QuanLyThuVien
                 if (txtTaiKhoan.Text.Length < 3)
                 {
                     MessageBox.Show("Tên tài khoản quá ngắn");
-                }            
+                }
                 else
                 {
                     if (txtTaiKhoan.Text.Length > 20)
                     {
                         MessageBox.Show("Tên tài khoản quá dài");
-                    }                 
+                    }
                     else
                     {
                         object obj = nhanvienSer.getModel(txtTaiKhoan.Text);
                         if (obj != null)
                         {
                             MessageBox.Show("Tên tài khoản đã tồn tại");
-                        }                            
+                        }
                         else
                         {
                             if (txtMatKhau.Text.Length < 5)
@@ -57,7 +57,7 @@ namespace QuanLyThuVien
                                 if (txtMatKhau.Text != txtXacNhan.Text)
                                 {
                                     MessageBox.Show("Mật khẩu không trùng nhau");
-                                }                                   
+                                }
                                 else
                                 {
                                     try
@@ -73,10 +73,10 @@ namespace QuanLyThuVien
                                     }
                                 }
                             }
-                        }    
+                        }
                     }
                 }
-            }  
+            }
         }
 
         private void btnThoat_Click(object sender, EventArgs e)

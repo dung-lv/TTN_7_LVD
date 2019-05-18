@@ -59,6 +59,10 @@
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.btnLuu = new System.Windows.Forms.Button();
+            this.cbLuaChon = new System.Windows.Forms.ComboBox();
+            this.label11 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.txtTuKhoa = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvThongTinMuon)).BeginInit();
             this.groupBox2.SuspendLayout();
@@ -79,9 +83,13 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.txtTuKhoa);
+            this.groupBox1.Controls.Add(this.label9);
+            this.groupBox1.Controls.Add(this.cbLuaChon);
             this.groupBox1.Controls.Add(this.dtpNgayTra);
             this.groupBox1.Controls.Add(this.dtpNgayMuon);
             this.groupBox1.Controls.Add(this.lbMaSach);
+            this.groupBox1.Controls.Add(this.label11);
             this.groupBox1.Controls.Add(this.cbTenDocGia);
             this.groupBox1.Controls.Add(this.cbMaDocGia);
             this.groupBox1.Controls.Add(this.rtbGhiChu);
@@ -98,7 +106,7 @@
             this.groupBox1.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Padding = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.groupBox1.Size = new System.Drawing.Size(1140, 290);
+            this.groupBox1.Size = new System.Drawing.Size(1163, 290);
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Nhập đầy đủ các thông tin";
@@ -107,7 +115,7 @@
             // 
             this.dtpNgayTra.Location = new System.Drawing.Point(222, 256);
             this.dtpNgayTra.Name = "dtpNgayTra";
-            this.dtpNgayTra.Size = new System.Drawing.Size(276, 22);
+            this.dtpNgayTra.Size = new System.Drawing.Size(449, 22);
             this.dtpNgayTra.TabIndex = 12;
             this.dtpNgayTra.Value = new System.DateTime(2019, 5, 6, 0, 0, 0, 0);
             // 
@@ -115,7 +123,7 @@
             // 
             this.dtpNgayMuon.Location = new System.Drawing.Point(222, 226);
             this.dtpNgayMuon.Name = "dtpNgayMuon";
-            this.dtpNgayMuon.Size = new System.Drawing.Size(276, 22);
+            this.dtpNgayMuon.Size = new System.Drawing.Size(449, 22);
             this.dtpNgayMuon.TabIndex = 11;
             this.dtpNgayMuon.Value = new System.DateTime(2019, 5, 6, 0, 0, 0, 0);
             // 
@@ -157,7 +165,7 @@
             // rtbGhiChu
             // 
             this.rtbGhiChu.Enabled = false;
-            this.rtbGhiChu.Location = new System.Drawing.Point(822, 70);
+            this.rtbGhiChu.Location = new System.Drawing.Point(860, 70);
             this.rtbGhiChu.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.rtbGhiChu.Name = "rtbGhiChu";
             this.rtbGhiChu.Size = new System.Drawing.Size(294, 95);
@@ -171,7 +179,7 @@
             this.cbXacNhan.Items.AddRange(new object[] {
             "Đã trả",
             "Chưa trả"});
-            this.cbXacNhan.Location = new System.Drawing.Point(822, 26);
+            this.cbXacNhan.Location = new System.Drawing.Point(860, 26);
             this.cbXacNhan.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.cbXacNhan.Name = "cbXacNhan";
             this.cbXacNhan.Size = new System.Drawing.Size(294, 24);
@@ -200,7 +208,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(702, 29);
+            this.label7.Location = new System.Drawing.Point(740, 29);
             this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(97, 17);
@@ -210,7 +218,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(734, 74);
+            this.label8.Location = new System.Drawing.Point(772, 74);
             this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(65, 17);
@@ -377,11 +385,11 @@
             this.groupBox3.Controls.Add(this.btnXoa);
             this.groupBox3.Controls.Add(this.btnThem);
             this.groupBox3.Controls.Add(this.btnSua);
-            this.groupBox3.Location = new System.Drawing.Point(1159, 82);
+            this.groupBox3.Location = new System.Drawing.Point(1182, 82);
             this.groupBox3.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Padding = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.groupBox3.Size = new System.Drawing.Size(228, 192);
+            this.groupBox3.Size = new System.Drawing.Size(205, 192);
             this.groupBox3.TabIndex = 4;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Chức năng";
@@ -397,6 +405,49 @@
             this.btnLuu.Text = "Lưu";
             this.btnLuu.UseVisualStyleBackColor = true;
             this.btnLuu.Click += new System.EventHandler(this.btnLuu_Click);
+            // 
+            // cbLuaChon
+            // 
+            this.cbLuaChon.FormattingEnabled = true;
+            this.cbLuaChon.Items.AddRange(new object[] {
+            "Mã Độc Giả",
+            "Ngày Mượn",
+            "Ngày Trả"});
+            this.cbLuaChon.Location = new System.Drawing.Point(860, 193);
+            this.cbLuaChon.Margin = new System.Windows.Forms.Padding(4);
+            this.cbLuaChon.Name = "cbLuaChon";
+            this.cbLuaChon.Size = new System.Drawing.Size(294, 24);
+            this.cbLuaChon.TabIndex = 1;
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.Location = new System.Drawing.Point(720, 193);
+            this.label11.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(117, 17);
+            this.label11.TabIndex = 0;
+            this.label11.Text = "Tìm Kiếm Theo:";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.Location = new System.Drawing.Point(769, 245);
+            this.label9.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(68, 17);
+            this.label9.TabIndex = 5;
+            this.label9.Text = "Từ khóa:";
+            // 
+            // txtTuKhoa
+            // 
+            this.txtTuKhoa.Location = new System.Drawing.Point(860, 243);
+            this.txtTuKhoa.Margin = new System.Windows.Forms.Padding(4);
+            this.txtTuKhoa.Name = "txtTuKhoa";
+            this.txtTuKhoa.Size = new System.Drawing.Size(294, 22);
+            this.txtTuKhoa.TabIndex = 13;
             // 
             // frmCapNhatThongTinMuon
             // 
@@ -455,5 +506,9 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column7;
         private System.Windows.Forms.DateTimePicker dtpNgayMuon;
         private System.Windows.Forms.DateTimePicker dtpNgayTra;
+        private System.Windows.Forms.ComboBox cbLuaChon;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.TextBox txtTuKhoa;
     }
 }

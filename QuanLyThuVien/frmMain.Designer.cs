@@ -47,9 +47,6 @@
             this.CapNhatLinhVucTSMI = new System.Windows.Forms.ToolStripMenuItem();
             this.CapNhatThongTinMuonTSMI = new System.Windows.Forms.ToolStripMenuItem();
             this.TimKiemTSMI = new System.Windows.Forms.ToolStripMenuItem();
-            this.TimKiemSachTSMI = new System.Windows.Forms.ToolStripMenuItem();
-            this.TimKiemDocGiaTSMI = new System.Windows.Forms.ToolStripMenuItem();
-            this.TimKiemTTMuonTSMI = new System.Windows.Forms.ToolStripMenuItem();
             this.TroGiupTSMI = new System.Windows.Forms.ToolStripMenuItem();
             this.ThoatTSMI = new System.Windows.Forms.ToolStripMenuItem();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
@@ -82,6 +79,7 @@
             this.gbDangNhap.Controls.Add(this.txtMatKhau);
             this.gbDangNhap.Controls.Add(this.txtTenTaiKhoan);
             this.gbDangNhap.Controls.Add(this.btnLogin);
+            this.gbDangNhap.Enabled = false;
             this.gbDangNhap.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gbDangNhap.Location = new System.Drawing.Point(373, 103);
             this.gbDangNhap.Name = "gbDangNhap";
@@ -159,7 +157,6 @@
             this.TaoTaiKhoanTSMI,
             this.DoiMatKhauTSMI,
             this.DangNhapTSMI});
-            this.QuanLyHeThongTSMI.Enabled = false;
             this.QuanLyHeThongTSMI.Image = global::QuanLyThuVien.Properties.Resources.onebit_01;
             this.QuanLyHeThongTSMI.Name = "QuanLyHeThongTSMI";
             this.QuanLyHeThongTSMI.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.A)));
@@ -176,6 +173,7 @@
             // 
             // DoiMatKhauTSMI
             // 
+            this.DoiMatKhauTSMI.Enabled = false;
             this.DoiMatKhauTSMI.Name = "DoiMatKhauTSMI";
             this.DoiMatKhauTSMI.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.B)));
             this.DoiMatKhauTSMI.Size = new System.Drawing.Size(229, 26);
@@ -238,40 +236,13 @@
             // 
             // TimKiemTSMI
             // 
-            this.TimKiemTSMI.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.TimKiemSachTSMI,
-            this.TimKiemDocGiaTSMI,
-            this.TimKiemTTMuonTSMI});
             this.TimKiemTSMI.Enabled = false;
             this.TimKiemTSMI.Image = global::QuanLyThuVien.Properties.Resources.onebit_02;
             this.TimKiemTSMI.Name = "TimKiemTSMI";
             this.TimKiemTSMI.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.M)));
-            this.TimKiemTSMI.Size = new System.Drawing.Size(104, 24);
-            this.TimKiemTSMI.Text = "Tìm Kiếm";
-            // 
-            // TimKiemSachTSMI
-            // 
-            this.TimKiemSachTSMI.Name = "TimKiemSachTSMI";
-            this.TimKiemSachTSMI.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.M)));
-            this.TimKiemSachTSMI.Size = new System.Drawing.Size(243, 26);
-            this.TimKiemSachTSMI.Text = "Sách";
-            this.TimKiemSachTSMI.Click += new System.EventHandler(this.TimKiemSachTSMI_Click);
-            // 
-            // TimKiemDocGiaTSMI
-            // 
-            this.TimKiemDocGiaTSMI.Name = "TimKiemDocGiaTSMI";
-            this.TimKiemDocGiaTSMI.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.N)));
-            this.TimKiemDocGiaTSMI.Size = new System.Drawing.Size(243, 26);
-            this.TimKiemDocGiaTSMI.Text = "Độc Giả";
-            this.TimKiemDocGiaTSMI.Click += new System.EventHandler(this.TimKiemDocGiaTSMI_Click);
-            // 
-            // TimKiemTTMuonTSMI
-            // 
-            this.TimKiemTTMuonTSMI.Name = "TimKiemTTMuonTSMI";
-            this.TimKiemTTMuonTSMI.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.O)));
-            this.TimKiemTTMuonTSMI.Size = new System.Drawing.Size(243, 26);
-            this.TimKiemTTMuonTSMI.Text = "Thông tin mượn";
-            this.TimKiemTTMuonTSMI.Click += new System.EventHandler(this.TimKiemTTMuonTSMI_Click);
+            this.TimKiemTSMI.Size = new System.Drawing.Size(177, 24);
+            this.TimKiemTSMI.Text = "Phiếu mượn quá hạn";
+            this.TimKiemTSMI.Click += new System.EventHandler(this.TimKiemTSMI_Click);
             // 
             // TroGiupTSMI
             // 
@@ -343,9 +314,9 @@
             this.label2.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(176, 96);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(63, 22);
+            this.label2.Size = new System.Drawing.Size(114, 22);
             this.label2.TabIndex = 1;
-            this.label2.Text = "Khánh";
+            this.label2.Text = "Quốc Khánh";
             // 
             // label1
             // 
@@ -465,10 +436,7 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.GroupBox groupBox4;
-        private System.Windows.Forms.ToolStripMenuItem TimKiemDocGiaTSMI;
         private System.Windows.Forms.ToolStripMenuItem CapNhatThongTinMuonTSMI;
-        private System.Windows.Forms.ToolStripMenuItem TimKiemSachTSMI;
-        private System.Windows.Forms.ToolStripMenuItem TimKiemTTMuonTSMI;
     }
 }
 

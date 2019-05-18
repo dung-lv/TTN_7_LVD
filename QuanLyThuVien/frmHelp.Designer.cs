@@ -44,9 +44,6 @@
             this.label17 = new System.Windows.Forms.Label();
             this.label18 = new System.Windows.Forms.Label();
             this.label19 = new System.Windows.Forms.Label();
-            this.label21 = new System.Windows.Forms.Label();
-            this.label22 = new System.Windows.Forms.Label();
-            this.label23 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
@@ -60,8 +57,6 @@
             this.label30 = new System.Windows.Forms.Label();
             this.label31 = new System.Windows.Forms.Label();
             this.label32 = new System.Windows.Forms.Label();
-            this.label33 = new System.Windows.Forms.Label();
-            this.label34 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label1
@@ -204,36 +199,9 @@
             this.label19.AutoSize = true;
             this.label19.Location = new System.Drawing.Point(399, 170);
             this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(68, 17);
+            this.label19.Size = new System.Drawing.Size(143, 17);
             this.label19.TabIndex = 18;
-            this.label19.Text = "Tìm kiếm:";
-            // 
-            // label21
-            // 
-            this.label21.AutoSize = true;
-            this.label21.Location = new System.Drawing.Point(479, 194);
-            this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(44, 17);
-            this.label21.TabIndex = 20;
-            this.label21.Text = "Sách:";
-            // 
-            // label22
-            // 
-            this.label22.AutoSize = true;
-            this.label22.Location = new System.Drawing.Point(479, 221);
-            this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(60, 17);
-            this.label22.TabIndex = 21;
-            this.label22.Text = "Độc giả:";
-            // 
-            // label23
-            // 
-            this.label23.AutoSize = true;
-            this.label23.Location = new System.Drawing.Point(479, 249);
-            this.label23.Name = "label23";
-            this.label23.Size = new System.Drawing.Size(111, 17);
-            this.label23.TabIndex = 22;
-            this.label23.Text = "Thông tin mượn:";
+            this.label19.Text = "Phiếu mượn quá hạn:";
             // 
             // label2
             // 
@@ -346,37 +314,17 @@
             // label32
             // 
             this.label32.AutoSize = true;
-            this.label32.Location = new System.Drawing.Point(605, 194);
+            this.label32.Location = new System.Drawing.Point(602, 170);
             this.label32.Name = "label32";
             this.label32.Size = new System.Drawing.Size(56, 17);
             this.label32.TabIndex = 35;
             this.label32.Text = "Ctrl + M";
-            // 
-            // label33
-            // 
-            this.label33.AutoSize = true;
-            this.label33.Location = new System.Drawing.Point(605, 221);
-            this.label33.Name = "label33";
-            this.label33.Size = new System.Drawing.Size(55, 17);
-            this.label33.TabIndex = 36;
-            this.label33.Text = "Ctrl + N";
-            // 
-            // label34
-            // 
-            this.label34.AutoSize = true;
-            this.label34.Location = new System.Drawing.Point(605, 249);
-            this.label34.Name = "label34";
-            this.label34.Size = new System.Drawing.Size(56, 17);
-            this.label34.TabIndex = 37;
-            this.label34.Text = "Ctrl + O";
             // 
             // frmHelp
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(745, 410);
-            this.Controls.Add(this.label34);
-            this.Controls.Add(this.label33);
             this.Controls.Add(this.label32);
             this.Controls.Add(this.label31);
             this.Controls.Add(this.label30);
@@ -390,9 +338,6 @@
             this.Controls.Add(this.label15);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.label23);
-            this.Controls.Add(this.label22);
-            this.Controls.Add(this.label21);
             this.Controls.Add(this.label19);
             this.Controls.Add(this.label18);
             this.Controls.Add(this.label17);
@@ -434,9 +379,6 @@
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.Label label19;
-        private System.Windows.Forms.Label label21;
-        private System.Windows.Forms.Label label22;
-        private System.Windows.Forms.Label label23;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label15;
@@ -450,7 +392,5 @@
         private System.Windows.Forms.Label label30;
         private System.Windows.Forms.Label label31;
         private System.Windows.Forms.Label label32;
-        private System.Windows.Forms.Label label33;
-        private System.Windows.Forms.Label label34;
     }
 }

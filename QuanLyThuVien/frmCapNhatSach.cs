@@ -8,6 +8,7 @@ using System.Text;
 using System.Windows.Forms;
 using QuanLyThuVien.Service;
 using QuanLyThuVien.Model;
+using System.Globalization;
 
 namespace QuanLyThuVien
 {
@@ -102,7 +103,8 @@ namespace QuanLyThuVien
             txtSoTrang.Text = dgvSach.Rows[e.RowIndex].Cells[6].Value.ToString();
             txtSoLuong.Text = dgvSach.Rows[e.RowIndex].Cells[7].Value.ToString();
             txtSoSachHong.Text = dgvSach.Rows[e.RowIndex].Cells[8].Value.ToString();
-            dtpNgayNhap.Text = dgvSach.Rows[e.RowIndex].Cells[9].Value.ToString();
+            string date = dgvSach.Rows[e.RowIndex].Cells[9].Value.ToString();
+            dtpNgayNhap.Value = DateTime.ParseExact(date, "dd-MM-yyyy", CultureInfo.InvariantCulture);
             rtbGhiChu.Text = dgvSach.Rows[e.RowIndex].Cells[10].Value.ToString();
             btnSua.Enabled = true;
             btnXoa.Enabled = true;
@@ -154,9 +156,9 @@ namespace QuanLyThuVien
             {
 
                 sachMod.MaSach = txtMaSach.Text;
-                sachMod.TenSach = txtTenSach.Text;
-                sachMod.TacGia = txtTacGia.Text;
-                sachMod.NhaXuatBan = txtNhaXuatBan.Text;
+                sachMod.TenSach = CommonService.ValidateString(txtTenSach.Text);
+                sachMod.TacGia = CommonService.ValidateString(txtTacGia.Text);
+                sachMod.NhaXuatBan = CommonService.ValidateString(txtNhaXuatBan.Text);
                 sachMod.MaLinhVuc = cbMaLinhVuc.Text;
                 sachMod.NamXuatBan = txtNamXuatBan.Text;
                 sachMod.SoTrang = Convert.ToInt32(txtSoTrang.Text);
@@ -174,7 +176,7 @@ namespace QuanLyThuVien
                     }
                     else
                     {
-                        sachSer.createModel(sachMod);             
+                        sachSer.createModel(sachMod);
                     }
                 }
                 else
@@ -215,6 +217,11 @@ namespace QuanLyThuVien
         private void txtNamXuatBan_KeyPress(object sender, KeyPressEventArgs e)
         {
             e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar);
+        }
+
+        private void txtTuKhoa_TextChanged(object sender, EventArgs e)
+        {
+            sachSer.searchModelBasic(cbLuaChon.Text, txtTuKhoa.Text, dgvSach);
         }
     }
 }
