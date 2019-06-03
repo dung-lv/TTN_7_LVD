@@ -174,8 +174,12 @@ namespace QuanLyThuVien
                     }
                     else
                     {
-                        muonMod.XacNhanTra = cbXacNhan.Text;
-                        thongTinMuonSer.updateModel(muonMod);
+                        foreach (object result in lbMaSach.SelectedItems)
+                        {
+                            muonMod.MaSach = result.ToString();
+                            muonMod.XacNhanTra = cbXacNhan.Text;
+                            thongTinMuonSer.updateModel(muonMod);
+                        }
                     }
                     MessageBox.Show("Lưu thành công");
                     clearText();
@@ -208,6 +212,17 @@ namespace QuanLyThuVien
         private void cbTenDocGia_SelectedIndexChanged(object sender, EventArgs e)
         {
             cbMaDocGia.SelectedIndex = cbTenDocGia.SelectedIndex;
+        }
+
+        private void txtTuKhoa_TextChanged(object sender, EventArgs e)
+        {
+            thongTinMuonSer.searchModelBasic(cbLuaChon.Text, txtTuKhoa.Text, dgvThongTinMuon);
+        }
+
+        private void txtSearchLBSach_TextChanged(object sender, EventArgs e)
+        {
+            lbMaSach.ClearSelected();
+            lbMaSach.SelectedIndex = lbMaSach.FindString(txtSearchLBSach.Text);
         }
 
         //private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)

@@ -47,7 +47,7 @@ namespace QuanLyThuVien
                         }
                         else
                         {
-                            if (txtMatKhauCu.Text != frmMain.matKhauCu)
+                            if (txtMatKhauCu.Text != frmLogin.matKhauCu)
                             {
                                 MessageBox.Show("Mật khẩu cũ sai hãy nhập lại");
                             }
@@ -56,7 +56,7 @@ namespace QuanLyThuVien
                                 nhanvienMod.MatKhau = txtMatKhauMoi.Text;
                                 try
                                 {
-                                    nhanvienSer.updateModel(nhanvienMod, frmMain.tenTaiKhoan);
+                                    nhanvienSer.updateModel(nhanvienMod, frmLogin.tenTaiKhoan);
                                     MessageBox.Show("Đổi mật khẩu thành công");
                                 }
                                 catch (Exception E)

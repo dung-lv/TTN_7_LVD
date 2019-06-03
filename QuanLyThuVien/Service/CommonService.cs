@@ -7,7 +7,7 @@ namespace QuanLyThuVien.Service
 {
     public class CommonService
     {
-        public static string ValidateString(string s)
+        public static string ValidateStringForName(string s)
         {
             if (String.IsNullOrEmpty(s))
                 return s;
@@ -25,6 +25,13 @@ namespace QuanLyThuVien.Service
                 }
             }
             return result.Trim();
+        }
+
+        public static string ValidateStringForID(string s)
+        {
+            if (String.IsNullOrEmpty(s))
+                return s;
+            return s.Trim().ToUpper();
         }
     }
 }

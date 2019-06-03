@@ -137,12 +137,12 @@ namespace QuanLyThuVien
             }
             else
             {
-                docGiaMod.MaDocGia = txtMaDocGia.Text;
-                docGiaMod.HoTen = CommonService.ValidateString(txtHoTen.Text);
+                docGiaMod.MaDocGia = CommonService.ValidateStringForID(txtMaDocGia.Text);
+                docGiaMod.HoTen = CommonService.ValidateStringForName(txtHoTen.Text);
                 docGiaMod.NgaySinh = dtpNgaySinh.Text;
                 docGiaMod.GioiTinh = cbGioiTinh.Text;
-                docGiaMod.Lop = txtLop.Text;
-                docGiaMod.DiaChi = CommonService.ValidateString(txtDiaChi.Text);
+                docGiaMod.Lop = CommonService.ValidateStringForID(txtLop.Text);
+                docGiaMod.DiaChi = CommonService.ValidateStringForName(txtDiaChi.Text);
                 if (IsValidEmail(txtEmail.Text))
                 {
                     docGiaMod.Email = txtEmail.Text;
@@ -189,7 +189,7 @@ namespace QuanLyThuVien
 
         private void txtTuKhoa_TextChanged(object sender, EventArgs e)
         {
-
+            docGiaSer.searchModelBasic(cbLuaChon.Text, txtTuKhoa.Text, dgvDocGia);
         }
     }
 }

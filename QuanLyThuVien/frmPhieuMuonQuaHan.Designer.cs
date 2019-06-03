@@ -43,9 +43,9 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.BackColor = System.Drawing.SystemColors.Info;
+            this.label1.BackColor = System.Drawing.Color.DarkGray;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.ForestGreen;
+            this.label1.ForeColor = System.Drawing.Color.DarkGreen;
             this.label1.Location = new System.Drawing.Point(440, 34);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(444, 32);
@@ -123,10 +123,12 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.DarkGray;
             this.ClientSize = new System.Drawing.Size(1385, 722);
             this.Controls.Add(this.dgvPhieuMuonQuaHan);
             this.Controls.Add(this.label1);
             this.Name = "frmPhieuMuonQuaHan";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Phiếu mượn quá hạn";
             this.Load += new System.EventHandler(this.frmTimKiemThongTinMuon_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvPhieuMuonQuaHan)).EndInit();

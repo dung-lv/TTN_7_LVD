@@ -151,4 +151,10 @@
   <data name="vrtableserat" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\vrtableserat.jpg;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="logo_login" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\logo_login.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="logo_main" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\logo_main.jpg;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
 </root>

@@ -43,7 +43,7 @@ namespace QuanLyThuVien.Service
 
         public void getListDeadline(DataGridView dgv)
         {
-            string sql = "select MADG,MASACH,SOLUONGMUON,NGAYMUON,NGAYTRA,XACNHANTRA,GHICHU from tblThongTinMuon where DEADLINE = 1";
+            string sql = "select MADG,MASACH,SOLUONGMUON,NGAYMUON,NGAYTRA,XACNHANTRA,GHICHU from tblThongTinMuon where DEADLINE = 1 and XACNHANTRA = N'Chưa trả'";
             connectSer.LoadDataDataGridView(dgv, sql);
         }
 
@@ -74,6 +74,7 @@ namespace QuanLyThuVien.Service
             sqlCom.CommandType = CommandType.StoredProcedure;
             sqlCom.CommandText = "USP_UpdateThongTinMuonTra";
             sqlCom.Parameters.Add("@MADG", SqlDbType.VarChar).Value = muon.MaDocGia;
+            sqlCom.Parameters.Add("@MASACH", SqlDbType.VarChar).Value = muon.MaSach;
             sqlCom.Parameters.Add("@XACNHANTRA", SqlDbType.NVarChar).Value = muon.XacNhanTra;
             sqlCom.Parameters.Add("@GHICHU", SqlDbType.NVarChar).Value = muon.GhiChu;
             sqlCom.Connection = connectSer.Connect();

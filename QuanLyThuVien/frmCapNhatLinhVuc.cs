@@ -100,8 +100,8 @@ namespace QuanLyThuVien
             }
             else
             {
-                linhVucMod.MaLinhVuc = txtMaLinhVuc.Text;
-                linhVucMod.TenLinhVuc = CommonService.ValidateString(txtTenLinhVuc.Text);
+                linhVucMod.MaLinhVuc = CommonService.ValidateStringForID(txtMaLinhVuc.Text);
+                linhVucMod.TenLinhVuc = CommonService.ValidateStringForName(txtTenLinhVuc.Text);
                 linhVucMod.GhiChu = rtbGhiChu.Text;
                 if (action == "add")
                 {

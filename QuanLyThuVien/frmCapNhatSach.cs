@@ -108,6 +108,8 @@ namespace QuanLyThuVien
             rtbGhiChu.Text = dgvSach.Rows[e.RowIndex].Cells[10].Value.ToString();
             btnSua.Enabled = true;
             btnXoa.Enabled = true;
+            btnThem.Enabled = true;
+            btnLuu.Enabled = false;
             action = "update";
         }
 
@@ -155,10 +157,10 @@ namespace QuanLyThuVien
             else
             {
 
-                sachMod.MaSach = txtMaSach.Text;
-                sachMod.TenSach = CommonService.ValidateString(txtTenSach.Text);
-                sachMod.TacGia = CommonService.ValidateString(txtTacGia.Text);
-                sachMod.NhaXuatBan = CommonService.ValidateString(txtNhaXuatBan.Text);
+                sachMod.MaSach = CommonService.ValidateStringForID(txtMaSach.Text);
+                sachMod.TenSach = CommonService.ValidateStringForName(txtTenSach.Text);
+                sachMod.TacGia = CommonService.ValidateStringForName(txtTacGia.Text);
+                sachMod.NhaXuatBan = CommonService.ValidateStringForName(txtNhaXuatBan.Text);
                 sachMod.MaLinhVuc = cbMaLinhVuc.Text;
                 sachMod.NamXuatBan = txtNamXuatBan.Text;
                 sachMod.SoTrang = Convert.ToInt32(txtSoTrang.Text);
@@ -197,6 +199,7 @@ namespace QuanLyThuVien
                 txtSoSachHong.Enabled = false;
                 dtpNgayNhap.Enabled = false;
                 rtbGhiChu.Enabled = false;
+
                 btnThem.Enabled = true;
                 btnSua.Enabled = false;
                 btnXoa.Enabled = false;
@@ -223,5 +226,6 @@ namespace QuanLyThuVien
         {
             sachSer.searchModelBasic(cbLuaChon.Text, txtTuKhoa.Text, dgvSach);
         }
+
     }
 }

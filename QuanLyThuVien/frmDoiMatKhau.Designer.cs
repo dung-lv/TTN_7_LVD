@@ -43,47 +43,50 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.ForestGreen;
+            this.label1.Font = new System.Drawing.Font("Arial", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.DarkGreen;
             this.label1.Location = new System.Drawing.Point(185, 10);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(181, 32);
+            this.label1.Size = new System.Drawing.Size(196, 33);
             this.label1.TabIndex = 0;
             this.label1.Text = "Đổi Mật Khẩu";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(56, 72);
+            this.label2.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.DarkGreen;
+            this.label2.Location = new System.Drawing.Point(13, 69);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(94, 16);
+            this.label2.Size = new System.Drawing.Size(103, 18);
             this.label2.TabIndex = 1;
             this.label2.Text = "Mật Khẩu Cũ:";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(51, 102);
+            this.label3.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.Color.DarkGreen;
+            this.label3.Location = new System.Drawing.Point(13, 99);
             this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(99, 16);
+            this.label3.Size = new System.Drawing.Size(111, 18);
             this.label3.TabIndex = 2;
             this.label3.Text = "Mật Khẩu Mới:";
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(28, 131);
+            this.label4.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.ForeColor = System.Drawing.Color.DarkGreen;
+            this.label4.Location = new System.Drawing.Point(9, 129);
             this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(119, 16);
+            this.label4.Size = new System.Drawing.Size(150, 18);
             this.label4.TabIndex = 3;
-            this.label4.Text = "Xác Nhận Lại MK:";
+            this.label4.Text = "Xác Nhận Mật Khẩu:";
             // 
             // txtMatKhauCu
             // 
@@ -114,10 +117,12 @@
             // 
             // btnXacNhan
             // 
-            this.btnXacNhan.Location = new System.Drawing.Point(192, 210);
+            this.btnXacNhan.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnXacNhan.ForeColor = System.Drawing.Color.DarkGreen;
+            this.btnXacNhan.Location = new System.Drawing.Point(247, 201);
             this.btnXacNhan.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.btnXacNhan.Name = "btnXacNhan";
-            this.btnXacNhan.Size = new System.Drawing.Size(100, 26);
+            this.btnXacNhan.Size = new System.Drawing.Size(107, 50);
             this.btnXacNhan.TabIndex = 7;
             this.btnXacNhan.Text = "Đồng ý";
             this.btnXacNhan.UseVisualStyleBackColor = true;
@@ -125,10 +130,12 @@
             // 
             // btnThoat
             // 
-            this.btnThoat.Location = new System.Drawing.Point(384, 210);
+            this.btnThoat.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnThoat.ForeColor = System.Drawing.Color.DarkGreen;
+            this.btnThoat.Location = new System.Drawing.Point(379, 201);
             this.btnThoat.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.btnThoat.Name = "btnThoat";
-            this.btnThoat.Size = new System.Drawing.Size(100, 26);
+            this.btnThoat.Size = new System.Drawing.Size(100, 50);
             this.btnThoat.TabIndex = 8;
             this.btnThoat.Text = "Thoát";
             this.btnThoat.UseVisualStyleBackColor = true;
@@ -137,10 +144,12 @@
             // cbShowPassword
             // 
             this.cbShowPassword.AutoSize = true;
-            this.cbShowPassword.Location = new System.Drawing.Point(192, 165);
+            this.cbShowPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbShowPassword.ForeColor = System.Drawing.Color.DarkGreen;
+            this.cbShowPassword.Location = new System.Drawing.Point(329, 163);
             this.cbShowPassword.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.cbShowPassword.Name = "cbShowPassword";
-            this.cbShowPassword.Size = new System.Drawing.Size(128, 21);
+            this.cbShowPassword.Size = new System.Drawing.Size(150, 22);
             this.cbShowPassword.TabIndex = 4;
             this.cbShowPassword.Text = "Show password";
             this.cbShowPassword.UseVisualStyleBackColor = true;
@@ -150,7 +159,8 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(512, 251);
+            this.BackColor = System.Drawing.Color.DarkGray;
+            this.ClientSize = new System.Drawing.Size(512, 263);
             this.Controls.Add(this.cbShowPassword);
             this.Controls.Add(this.btnThoat);
             this.Controls.Add(this.btnXacNhan);

@@ -20,69 +20,10 @@ namespace QuanLyThuVien
 
         private ConnectService connectSer = new ConnectService();
         private NhanVienService nhanVienSer = new NhanVienService();
-        private string A, B, C, D;
-        public static string tenTaiKhoan, matKhauCu;
-
-        private void frmMain_Load(object sender, EventArgs e)
-        {
-            try
-            {
-                connectSer.Connect();
-            }
-            catch
-            {
-                MessageBox.Show("Không thể kết nối");
-            }
-            A = label1.Text;
-            B = label2.Text;
-            C = label3.Text;
-            D = label4.Text;
-            label4.Text = "";
-            label3.Text = "";
-            label2.Text = "";
-            label1.Text = "";
-            timer1.Start();
-        }
-
-        private void btnDangNhap_Click(object sender, EventArgs e)
-        {
-            if (txtTenTaiKhoan.Text == "" || txtMatKhau.Text == "")
-            {
-                MessageBox.Show("Xin hãy nhập đầy đủ thông tin");
-            }
-            else
-            {
-                object obj = nhanVienSer.logIn(txtTenTaiKhoan.Text, txtMatKhau.Text);
-                if (obj == null)
-                {
-                    MessageBox.Show("Sai tài khoản");
-                }
-                else
-                {
-                    MessageBox.Show("Đăng nhập thành công");
-                    tenTaiKhoan = txtTenTaiKhoan.Text;
-                    matKhauCu = txtMatKhau.Text;
-                    DoiMatKhauTSMI.Enabled = true;
-                    CapNhatTSMI.Enabled = true;
-                    TimKiemTSMI.Enabled = true;
-                    txtTenTaiKhoan.Text = "";
-                    txtMatKhau.Text = "";
-                    gbDangNhap.Enabled = false;
-                }
-            }
-        }
-
-        private void frmMain_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            if (MessageBox.Show("Bạn có muốn thoát khỏi chương trình không ?", "FormClosing", MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.Yes)
-                e.Cancel = false;
-            else
-                e.Cancel = true;
-        }
 
         private void ThoatTSMI_Click(object sender, EventArgs e)
         {
-            this.Close();
+            Application.Exit();
         }
 
         private void TaoTaiKhoanTSMI_Click(object sender, EventArgs e)
@@ -99,11 +40,7 @@ namespace QuanLyThuVien
 
         private void DangNhapTSMI_Click(object sender, EventArgs e)
         {
-            gbDangNhap.Enabled = true;
-            CapNhatTSMI.Enabled = false;
-            TimKiemTSMI.Enabled = false;
-            txtTenTaiKhoan.Text = "";
-            txtMatKhau.Text = "";
+            this.Close();
         }
 
         private void CapNhatSachTSMI_Click(object sender, EventArgs e)
@@ -148,67 +85,6 @@ namespace QuanLyThuVien
         {
             frmPhieuMuonQuaHan frmPMQH = new frmPhieuMuonQuaHan();
             frmPMQH.Show();
-        }
-
-        private void timer1_Tick(object sender, EventArgs e)
-        {
-            int d = 0, x;
-            x = A.Length;
-            d++;
-            string a = A.Substring(0, 1);
-            A = A.Substring(1, A.Length - 1);
-            label1.Text = label1.Text + a;
-            if (d == x)
-            {
-                timer1.Stop();
-                timer2.Start();
-            }
-        }
-
-        private void timer2_Tick(object sender, EventArgs e)
-        {
-            int d = 0, x;
-            x = B.Length;
-            d++;
-            string a = B.Substring(0, 1);
-            B = B.Substring(1, B.Length - 1);
-            label2.Text = label2.Text + a;
-            if (d == x)
-            {
-                timer2.Stop();
-                timer3.Start();
-            }
-        }
-
-        private void timer3_Tick(object sender, EventArgs e)
-        {
-            int d = 0, x;
-            x = C.Length;
-            d++;
-            string a = C.Substring(0, 1);
-            C = C.Substring(1, C.Length - 1);
-            label3.Text = label3.Text + a;
-            if (d == x)
-            {
-                timer3.Stop();
-                timer4.Start();
-                timer5.Start();
-                timer6.Start();
-            }
-        }
-
-        private void timer4_Tick(object sender, EventArgs e)
-        {
-            int d = 0, x;
-            x = D.Length;
-            d++;
-            string a = D.Substring(0, 1);
-            D = D.Substring(1, D.Length - 1);
-            label4.Text = label4.Text + a;
-            if (d == x)
-            {
-                timer4.Stop();
-            }
         }
     }
 }
