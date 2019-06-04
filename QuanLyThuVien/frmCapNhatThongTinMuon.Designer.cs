@@ -160,6 +160,7 @@
             // 
             // cbLuaChon
             // 
+            this.cbLuaChon.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbLuaChon.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbLuaChon.FormattingEnabled = true;
             this.cbLuaChon.Items.AddRange(new object[] {
@@ -216,6 +217,7 @@
             // 
             // cbTenDocGia
             // 
+            this.cbTenDocGia.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbTenDocGia.Enabled = false;
             this.cbTenDocGia.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbTenDocGia.FormattingEnabled = true;
@@ -252,6 +254,7 @@
             // 
             // cbXacNhan
             // 
+            this.cbXacNhan.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbXacNhan.Enabled = false;
             this.cbXacNhan.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbXacNhan.FormattingEnabled = true;

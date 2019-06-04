@@ -323,6 +323,7 @@
             // 
             // cbLuaChon
             // 
+            this.cbLuaChon.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbLuaChon.FormattingEnabled = true;
             this.cbLuaChon.Items.AddRange(new object[] {
             "Mã Lĩnh Vực",

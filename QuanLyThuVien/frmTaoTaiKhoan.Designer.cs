@@ -38,6 +38,8 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.btnDongY = new System.Windows.Forms.Button();
+            this.label7 = new System.Windows.Forms.Label();
+            this.cbPhanQuyen = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // cbShowPassword
@@ -45,7 +47,7 @@
             this.cbShowPassword.AutoSize = true;
             this.cbShowPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbShowPassword.ForeColor = System.Drawing.Color.DarkGreen;
-            this.cbShowPassword.Location = new System.Drawing.Point(380, 162);
+            this.cbShowPassword.Location = new System.Drawing.Point(380, 201);
             this.cbShowPassword.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.cbShowPassword.Name = "cbShowPassword";
             this.cbShowPassword.Size = new System.Drawing.Size(156, 22);
@@ -58,7 +60,7 @@
             // 
             this.btnThoat.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnThoat.ForeColor = System.Drawing.Color.DarkGreen;
-            this.btnThoat.Location = new System.Drawing.Point(436, 199);
+            this.btnThoat.Location = new System.Drawing.Point(436, 229);
             this.btnThoat.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.btnThoat.Name = "btnThoat";
             this.btnThoat.Size = new System.Drawing.Size(100, 42);
@@ -69,7 +71,7 @@
             // 
             // txtXacNhan
             // 
-            this.txtXacNhan.Location = new System.Drawing.Point(191, 124);
+            this.txtXacNhan.Location = new System.Drawing.Point(191, 128);
             this.txtXacNhan.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtXacNhan.Name = "txtXacNhan";
             this.txtXacNhan.PasswordChar = '*';
@@ -98,7 +100,7 @@
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.Color.DarkGreen;
-            this.label4.Location = new System.Drawing.Point(8, 126);
+            this.label4.Location = new System.Drawing.Point(8, 128);
             this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(150, 18);
@@ -110,7 +112,7 @@
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.DarkGreen;
-            this.label3.Location = new System.Drawing.Point(79, 97);
+            this.label3.Location = new System.Drawing.Point(8, 95);
             this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(79, 18);
@@ -122,7 +124,7 @@
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.DarkGreen;
-            this.label2.Location = new System.Drawing.Point(42, 64);
+            this.label2.Location = new System.Drawing.Point(8, 64);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(116, 18);
@@ -145,7 +147,7 @@
             // 
             this.btnDongY.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDongY.ForeColor = System.Drawing.Color.DarkGreen;
-            this.btnDongY.Location = new System.Drawing.Point(306, 199);
+            this.btnDongY.Location = new System.Drawing.Point(296, 229);
             this.btnDongY.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.btnDongY.Name = "btnDongY";
             this.btnDongY.Size = new System.Drawing.Size(100, 42);
@@ -154,12 +156,39 @@
             this.btnDongY.UseVisualStyleBackColor = true;
             this.btnDongY.Click += new System.EventHandler(this.btnDongY_Click);
             // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.ForeColor = System.Drawing.Color.DarkGreen;
+            this.label7.Location = new System.Drawing.Point(7, 162);
+            this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(112, 20);
+            this.label7.TabIndex = 25;
+            this.label7.Text = "Phân quyền:";
+            // 
+            // cbPhanQuyen
+            // 
+            this.cbPhanQuyen.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbPhanQuyen.FormattingEnabled = true;
+            this.cbPhanQuyen.Items.AddRange(new object[] {
+            "Nhân viên",
+            "Quản lý"});
+            this.cbPhanQuyen.Location = new System.Drawing.Point(191, 162);
+            this.cbPhanQuyen.Margin = new System.Windows.Forms.Padding(4);
+            this.cbPhanQuyen.Name = "cbPhanQuyen";
+            this.cbPhanQuyen.Size = new System.Drawing.Size(345, 24);
+            this.cbPhanQuyen.TabIndex = 24;
+            // 
             // frmTaoTaiKhoan
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.DarkGray;
             this.ClientSize = new System.Drawing.Size(549, 283);
+            this.Controls.Add(this.label7);
+            this.Controls.Add(this.cbPhanQuyen);
             this.Controls.Add(this.cbShowPassword);
             this.Controls.Add(this.btnThoat);
             this.Controls.Add(this.btnDongY);
@@ -191,5 +220,7 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnDongY;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.ComboBox cbPhanQuyen;
     }
 }

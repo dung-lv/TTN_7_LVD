@@ -28,8 +28,8 @@ namespace QuanLyThuVien
 
         private void TaoTaiKhoanTSMI_Click(object sender, EventArgs e)
         {
-            frmTaoTaiKhoan frmTTK = new frmTaoTaiKhoan();
-            frmTTK.Show();
+            frmQuanLyTaiKhoan frmQLTK = new frmQuanLyTaiKhoan();
+            frmQLTK.Show();
         }
 
         private void DoiMatKhauTSMI_Click(object sender, EventArgs e)
@@ -85,6 +85,14 @@ namespace QuanLyThuVien
         {
             frmPhieuMuonQuaHan frmPMQH = new frmPhieuMuonQuaHan();
             frmPMQH.Show();
+        }
+
+        private void frmMain_Load(object sender, EventArgs e)
+        {
+            if(frmLogin.phanQuyen.Equals("Quản lý"))
+            {
+                QuanLyTaiKhoanTSMI.Enabled = true;
+            }
         }
     }
 }

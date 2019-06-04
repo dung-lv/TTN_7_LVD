@@ -154,20 +154,21 @@
             // 
             // cbTenLinhVuc
             // 
+            this.cbTenLinhVuc.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbTenLinhVuc.Enabled = false;
-            this.cbTenLinhVuc.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbTenLinhVuc.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbTenLinhVuc.FormattingEnabled = true;
             this.cbTenLinhVuc.Location = new System.Drawing.Point(701, 19);
             this.cbTenLinhVuc.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.cbTenLinhVuc.Name = "cbTenLinhVuc";
-            this.cbTenLinhVuc.Size = new System.Drawing.Size(131, 24);
+            this.cbTenLinhVuc.Size = new System.Drawing.Size(131, 26);
             this.cbTenLinhVuc.TabIndex = 8;
             this.cbTenLinhVuc.SelectedIndexChanged += new System.EventHandler(this.cbTenLinhVuc_SelectedIndexChanged);
             // 
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(224, 180);
+            this.label13.Location = new System.Drawing.Point(244, 181);
             this.label13.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(52, 18);
@@ -178,7 +179,7 @@
             // 
             this.txtSoSachHong.Enabled = false;
             this.txtSoSachHong.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtSoSachHong.Location = new System.Drawing.Point(152, 177);
+            this.txtSoSachHong.Location = new System.Drawing.Point(172, 178);
             this.txtSoSachHong.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtSoSachHong.MaxLength = 100;
             this.txtSoSachHong.Name = "txtSoSachHong";
@@ -222,12 +223,12 @@
             // 
             this.cbMaLinhVuc.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbMaLinhVuc.Enabled = false;
-            this.cbMaLinhVuc.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbMaLinhVuc.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbMaLinhVuc.FormattingEnabled = true;
             this.cbMaLinhVuc.Location = new System.Drawing.Point(585, 19);
             this.cbMaLinhVuc.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.cbMaLinhVuc.Name = "cbMaLinhVuc";
-            this.cbMaLinhVuc.Size = new System.Drawing.Size(105, 24);
+            this.cbMaLinhVuc.Size = new System.Drawing.Size(105, 26);
             this.cbMaLinhVuc.TabIndex = 7;
             this.cbMaLinhVuc.SelectedIndexChanged += new System.EventHandler(this.cbMaLinhVuc_SelectedIndexChanged);
             // 
@@ -246,7 +247,7 @@
             // 
             this.txtNamXuatBan.Enabled = false;
             this.txtNamXuatBan.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtNamXuatBan.Location = new System.Drawing.Point(152, 85);
+            this.txtNamXuatBan.Location = new System.Drawing.Point(172, 86);
             this.txtNamXuatBan.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtNamXuatBan.Name = "txtNamXuatBan";
             this.txtNamXuatBan.Size = new System.Drawing.Size(247, 22);
@@ -257,7 +258,7 @@
             // 
             this.txtSoLuong.Enabled = false;
             this.txtSoLuong.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtSoLuong.Location = new System.Drawing.Point(152, 147);
+            this.txtSoLuong.Location = new System.Drawing.Point(172, 148);
             this.txtSoLuong.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtSoLuong.Name = "txtSoLuong";
             this.txtSoLuong.Size = new System.Drawing.Size(66, 22);
@@ -268,7 +269,7 @@
             // 
             this.txtSoTrang.Enabled = false;
             this.txtSoTrang.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtSoTrang.Location = new System.Drawing.Point(152, 118);
+            this.txtSoTrang.Location = new System.Drawing.Point(172, 119);
             this.txtSoTrang.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtSoTrang.Name = "txtSoTrang";
             this.txtSoTrang.Size = new System.Drawing.Size(66, 22);
@@ -279,7 +280,7 @@
             // 
             this.txtTenSach.Enabled = false;
             this.txtTenSach.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtTenSach.Location = new System.Drawing.Point(152, 58);
+            this.txtTenSach.Location = new System.Drawing.Point(172, 59);
             this.txtTenSach.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtTenSach.Name = "txtTenSach";
             this.txtTenSach.Size = new System.Drawing.Size(247, 22);
@@ -289,7 +290,7 @@
             // 
             this.txtMaSach.Enabled = false;
             this.txtMaSach.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtMaSach.Location = new System.Drawing.Point(152, 29);
+            this.txtMaSach.Location = new System.Drawing.Point(172, 30);
             this.txtMaSach.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtMaSach.Name = "txtMaSach";
             this.txtMaSach.Size = new System.Drawing.Size(247, 22);
@@ -348,7 +349,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(27, 88);
+            this.label5.Location = new System.Drawing.Point(27, 90);
             this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(121, 18);
@@ -622,6 +623,7 @@
             // 
             // cbLuaChon
             // 
+            this.cbLuaChon.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbLuaChon.FormattingEnabled = true;
             this.cbLuaChon.Items.AddRange(new object[] {
             "Mã Sách",

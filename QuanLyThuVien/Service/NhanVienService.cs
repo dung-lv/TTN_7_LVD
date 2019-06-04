@@ -17,9 +17,16 @@ namespace QuanLyThuVien.Service
         {
             connectSer.Connect();
         }
+
+        public void getAll(DataGridView dgv)
+        {
+            string sql = "select TENTAIKHOAN,MATKHAU,PHANQUYEN from tblNhanVien";
+            connectSer.LoadDataDataGridView(dgv, sql);
+        }
+
         public Object logIn(string tenTaiKhoan, string matkhau)
         {
-            //string sql = "select ID from tblNhanVien where TENTAIKHOAN='" + tenTaiKhoan + "' and MATKHAU='" + matkhau + "'";
+            //string sql = "select PHANQUYEN from tblNhanVien where TENTAIKHOAN='" + tenTaiKhoan + "' and MATKHAU='" + matkhau + "'";
             //return connectSer.getValueModel(sql);
             sqlCom = new SqlCommand();
             sqlCom.CommandType = CommandType.StoredProcedure;
@@ -52,20 +59,44 @@ namespace QuanLyThuVien.Service
             sqlCom.CommandType = CommandType.StoredProcedure;
             sqlCom.CommandText = "USP_InsertNhanVien";
             sqlCom.Parameters.Add("@TENTAIKHOAN", SqlDbType.VarChar).Value = nhanvien.TaiKhoan;
-            sqlCom.Parameters.Add("@MATKHAU", SqlDbType.NVarChar).Value = nhanvien.MatKhau;
+            sqlCom.Parameters.Add("@MATKHAU", SqlDbType.VarChar).Value = nhanvien.MatKhau;
+            sqlCom.Parameters.Add("@PHANQUYEN", SqlDbType.NVarChar).Value = nhanvien.PhanQuyen;
             sqlCom.Connection = connectSer.Connect();
             sqlCom.ExecuteNonQuery();
         }
 
-        public void updateModel(tblNhanVienModel nhanvien, string taiKhoan)
+        public void updateModel(tblNhanVienModel nhanvien)
+        {
+            //string sql = "Update tblNhanVien set PHANQUYEN='" + nhanvien.PhanQuyen + "'where TENTAIKHOAN='" + nhanvien.TaiKhoan + "'";
+            //connectSer.ThucThiSQLTheoKetNoi(sql);
+            sqlCom = new SqlCommand();
+            sqlCom.CommandType = CommandType.StoredProcedure;
+            sqlCom.CommandText = "USP_UpdateNhanVien";
+            sqlCom.Parameters.Add("@TENTAIKHOAN", SqlDbType.VarChar).Value = nhanvien.TaiKhoan;
+            sqlCom.Parameters.Add("@PHANQUYEN", SqlDbType.NVarChar).Value = nhanvien.PhanQuyen;
+            sqlCom.Connection = connectSer.Connect();
+            sqlCom.ExecuteNonQuery();
+        }
+
+        public void updatePasswordModel(tblNhanVienModel nhanvien, string taiKhoan)
         {
             //string sql = "Update tblNhanVien set MATKHAU='" + nhanvien.MatKhau + "'where TENTAIKHOAN='" + taiKhoan + "'";
             //connectSer.ThucThiSQLTheoKetNoi(sql);
             sqlCom = new SqlCommand();
             sqlCom.CommandType = CommandType.StoredProcedure;
-            sqlCom.CommandText = "USP_UpdateNhanVien";
+            sqlCom.CommandText = "USP_DoiMatKhau";
             sqlCom.Parameters.Add("@TENTAIKHOAN", SqlDbType.VarChar).Value = taiKhoan;
             sqlCom.Parameters.Add("@MATKHAU", SqlDbType.VarChar).Value = nhanvien.MatKhau;
+            sqlCom.Connection = connectSer.Connect();
+            sqlCom.ExecuteNonQuery();
+        }
+
+        public void deleteModel(string taiKhoan)
+        {
+            sqlCom = new SqlCommand();
+            sqlCom.CommandType = CommandType.StoredProcedure;
+            sqlCom.CommandText = "USP_XoaTaiKhoan";
+            sqlCom.Parameters.Add("@TENTAIKHOAN", SqlDbType.VarChar).Value = taiKhoan;
             sqlCom.Connection = connectSer.Connect();
             sqlCom.ExecuteNonQuery();
         }

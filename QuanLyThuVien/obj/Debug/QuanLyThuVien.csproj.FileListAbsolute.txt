@@ -83,3 +83,4 @@ D:\TTN\TTN_7_LVD\QuanLyThuVien\obj\Debug\QuanLyThuVien.frmCapNhatThongTinMuon.re
 D:\TTN\TTN_7_LVD\QuanLyThuVien\obj\Debug\QuanLyThuVien.frmPhieuMuonQuaHan.resources
 D:\TTN\TTN_7_LVD\QuanLyThuVien\obj\Debug\QuanLyThuVien.Properties.Resources.resources
 D:\TTN\TTN_7_LVD\QuanLyThuVien\obj\Debug\QuanLyThuVien.csproj.GenerateResource.Cache
+D:\TTN\TTN_7_LVD\QuanLyThuVien\obj\Debug\QuanLyThuVien.frmQuanLyTaiKhoan.resources

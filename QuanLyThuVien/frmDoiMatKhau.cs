@@ -56,7 +56,7 @@ namespace QuanLyThuVien
                                 nhanvienMod.MatKhau = txtMatKhauMoi.Text;
                                 try
                                 {
-                                    nhanvienSer.updateModel(nhanvienMod, frmLogin.tenTaiKhoan);
+                                    nhanvienSer.updatePasswordModel(nhanvienMod, frmLogin.tenTaiKhoan);
                                     MessageBox.Show("Đổi mật khẩu thành công");
                                 }
                                 catch (Exception E)

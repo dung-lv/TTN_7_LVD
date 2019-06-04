@@ -18,14 +18,14 @@ namespace QuanLyThuVien
             InitializeComponent();
         }
 
-        private ConnectService connectSer = new ConnectService();
+        //private ConnectService connectSer = new ConnectService();
         private LinhVucService linhVucSer = new LinhVucService();
         private tblLinhVucModel linhVucMod = new tblLinhVucModel();
         private string action = "";
 
         private void capNhatLinhVuc_Load(object sender, EventArgs e)
         {
-            connectSer.Connect();
+            //connectSer.Connect();
             linhVucSer.getAll(dgvLinhVuc);
         }
 
@@ -82,7 +82,7 @@ namespace QuanLyThuVien
 
         private void btnSua_Click(object sender, EventArgs e)
         {
-            txtMaLinhVuc.Enabled = true;
+            txtMaLinhVuc.Enabled = false;
             txtTenLinhVuc.Enabled = true;
             rtbGhiChu.Enabled = true;
             btnThem.Enabled = false;

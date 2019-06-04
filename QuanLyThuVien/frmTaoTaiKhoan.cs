@@ -23,7 +23,7 @@ namespace QuanLyThuVien
 
         private void btnDongY_Click(object sender, EventArgs e)
         {
-            if (txtTaiKhoan.Text == "" || txtMatKhau.Text == "" || txtXacNhan.Text == "")
+            if (txtTaiKhoan.Text == "" || txtMatKhau.Text == "" || txtXacNhan.Text == "" || cbPhanQuyen.Text == "")
             {
                 MessageBox.Show("Xin hãy nhập đầy đủ thông tin");
             }
@@ -64,6 +64,7 @@ namespace QuanLyThuVien
                                     {
                                         nhanvienMod.TaiKhoan = txtTaiKhoan.Text;
                                         nhanvienMod.MatKhau = txtMatKhau.Text;
+                                        nhanvienMod.PhanQuyen = cbPhanQuyen.Text;
                                         nhanvienSer.createModel(nhanvienMod);
                                         MessageBox.Show("Tạo tài khoản thành công");
                                     }

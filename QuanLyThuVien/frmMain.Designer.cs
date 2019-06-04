@@ -32,7 +32,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMain));
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.QuanLyHeThongTSMI = new System.Windows.Forms.ToolStripMenuItem();
-            this.TaoTaiKhoanTSMI = new System.Windows.Forms.ToolStripMenuItem();
+            this.QuanLyTaiKhoanTSMI = new System.Windows.Forms.ToolStripMenuItem();
             this.DoiMatKhauTSMI = new System.Windows.Forms.ToolStripMenuItem();
             this.DangNhapTSMI = new System.Windows.Forms.ToolStripMenuItem();
             this.CapNhatTSMI = new System.Windows.Forms.ToolStripMenuItem();
@@ -76,7 +76,7 @@
             // QuanLyHeThongTSMI
             // 
             this.QuanLyHeThongTSMI.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.TaoTaiKhoanTSMI,
+            this.QuanLyTaiKhoanTSMI,
             this.DoiMatKhauTSMI,
             this.DangNhapTSMI});
             this.QuanLyHeThongTSMI.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -86,19 +86,20 @@
             this.QuanLyHeThongTSMI.Size = new System.Drawing.Size(109, 24);
             this.QuanLyHeThongTSMI.Text = "Hệ Thống";
             // 
-            // TaoTaiKhoanTSMI
+            // QuanLyTaiKhoanTSMI
             // 
-            this.TaoTaiKhoanTSMI.Name = "TaoTaiKhoanTSMI";
-            this.TaoTaiKhoanTSMI.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.A)));
-            this.TaoTaiKhoanTSMI.Size = new System.Drawing.Size(239, 26);
-            this.TaoTaiKhoanTSMI.Text = "Tạo Tài Khoản";
-            this.TaoTaiKhoanTSMI.Click += new System.EventHandler(this.TaoTaiKhoanTSMI_Click);
+            this.QuanLyTaiKhoanTSMI.Enabled = false;
+            this.QuanLyTaiKhoanTSMI.Name = "QuanLyTaiKhoanTSMI";
+            this.QuanLyTaiKhoanTSMI.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.A)));
+            this.QuanLyTaiKhoanTSMI.Size = new System.Drawing.Size(270, 26);
+            this.QuanLyTaiKhoanTSMI.Text = "Quản Lý Tài Khoản";
+            this.QuanLyTaiKhoanTSMI.Click += new System.EventHandler(this.TaoTaiKhoanTSMI_Click);
             // 
             // DoiMatKhauTSMI
             // 
             this.DoiMatKhauTSMI.Name = "DoiMatKhauTSMI";
             this.DoiMatKhauTSMI.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.B)));
-            this.DoiMatKhauTSMI.Size = new System.Drawing.Size(239, 26);
+            this.DoiMatKhauTSMI.Size = new System.Drawing.Size(270, 26);
             this.DoiMatKhauTSMI.Text = "Đổi Mật Khẩu";
             this.DoiMatKhauTSMI.Click += new System.EventHandler(this.DoiMatKhauTSMI_Click);
             // 
@@ -106,7 +107,7 @@
             // 
             this.DangNhapTSMI.Name = "DangNhapTSMI";
             this.DangNhapTSMI.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.C)));
-            this.DangNhapTSMI.Size = new System.Drawing.Size(239, 26);
+            this.DangNhapTSMI.Size = new System.Drawing.Size(270, 26);
             this.DangNhapTSMI.Text = "Đăng Nhập";
             this.DangNhapTSMI.Click += new System.EventHandler(this.DangNhapTSMI_Click);
             // 
@@ -171,6 +172,7 @@
             this.TroGiupTSMI.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TroGiupTSMI.Image = global::QuanLyThuVien.Properties.Resources.onebit_50;
             this.TroGiupTSMI.Name = "TroGiupTSMI";
+            this.TroGiupTSMI.ShortcutKeys = System.Windows.Forms.Keys.F1;
             this.TroGiupTSMI.Size = new System.Drawing.Size(101, 24);
             this.TroGiupTSMI.Text = "Trợ Giúp";
             this.TroGiupTSMI.Click += new System.EventHandler(this.TroGiupTSMI_Click);
@@ -229,6 +231,7 @@
             this.Name = "frmMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Quản Lý Thư Viện";
+            this.Load += new System.EventHandler(this.frmMain_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.groupBox4.ResumeLayout(false);
@@ -241,7 +244,7 @@
         #endregion
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem QuanLyHeThongTSMI;
-        private System.Windows.Forms.ToolStripMenuItem TaoTaiKhoanTSMI;
+        private System.Windows.Forms.ToolStripMenuItem QuanLyTaiKhoanTSMI;
         private System.Windows.Forms.ToolStripMenuItem DoiMatKhauTSMI;
         private System.Windows.Forms.ToolStripMenuItem CapNhatTSMI;
         private System.Windows.Forms.ToolStripMenuItem CapNhatSachTSMI;

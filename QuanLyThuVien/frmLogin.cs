@@ -32,7 +32,7 @@ namespace QuanLyThuVien
             }
         }
 
-        public static string tenTaiKhoan, matKhauCu;
+        public static string tenTaiKhoan, matKhauCu, phanQuyen;
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
@@ -52,12 +52,19 @@ namespace QuanLyThuVien
                     MessageBox.Show("Đăng nhập thành công");
                     tenTaiKhoan = txtTenTaiKhoan.Text;
                     matKhauCu = txtMatKhau.Text;
+                    phanQuyen = obj.ToString();
                     frmMain main = new frmMain();
                     main.ShowDialog();
                     txtTenTaiKhoan.Text = "";
                     txtMatKhau.Text = "";
                 }
             }
+        }
+
+        private void btnRegister_Click(object sender, EventArgs e)
+        {
+            frmTaoTaiKhoan frmTTK = new frmTaoTaiKhoan();
+            frmTTK.ShowDialog();
         }
 
         private void frmLogin_FormClosing_1(object sender, FormClosingEventArgs e)

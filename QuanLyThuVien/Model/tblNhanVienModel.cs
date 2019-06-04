@@ -11,6 +11,8 @@ namespace QuanLyThuVien.Model
 
         public string MatKhau { get; set; }
 
+        public string PhanQuyen { get; set; }
+
         public tblNhanVienModel() { }
 
         public tblNhanVienModel(string taikhoan, string matkhau)

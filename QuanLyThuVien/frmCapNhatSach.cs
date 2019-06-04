@@ -74,7 +74,7 @@ namespace QuanLyThuVien
 
         private void btnSua_Click(object sender, EventArgs e)
         {
-            txtMaSach.Enabled = true;
+            txtMaSach.Enabled = false;
             txtTenSach.Enabled = true;
             txtTacGia.Enabled = true;
             txtNhaXuatBan.Enabled = true;

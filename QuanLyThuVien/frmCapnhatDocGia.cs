@@ -19,7 +19,7 @@ namespace QuanLyThuVien
             InitializeComponent();
         }
 
-        private ConnectService connectSer = new ConnectService();
+        //private ConnectService connectSer = new ConnectService();
         private DocGiaService docGiaSer = new DocGiaService();
         private tblDocGiaModel docGiaMod = new tblDocGiaModel();
         private string action = "";
@@ -29,7 +29,7 @@ namespace QuanLyThuVien
             dtpNgaySinh.Format = DateTimePickerFormat.Custom;
             dtpNgaySinh.CustomFormat = "dd-MM-yyyy";
 
-            connectSer.Connect();
+            //connectSer.Connect();
             docGiaSer.getAll(dgvDocGia);
         }
 
@@ -83,25 +83,9 @@ namespace QuanLyThuVien
             }
         }
 
-        private void dgvDocGia_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            txtMaDocGia.Text = dgvDocGia.Rows[e.RowIndex].Cells[0].Value.ToString();
-            txtHoTen.Text = dgvDocGia.Rows[e.RowIndex].Cells[1].Value.ToString();
-            string date = dgvDocGia.Rows[e.RowIndex].Cells[2].Value.ToString();
-            dtpNgaySinh.Value = DateTime.ParseExact(date, "dd-MM-yyyy", CultureInfo.InvariantCulture);
-            cbGioiTinh.Text = dgvDocGia.Rows[e.RowIndex].Cells[3].Value.ToString();
-            txtLop.Text = dgvDocGia.Rows[e.RowIndex].Cells[4].Value.ToString();
-            txtDiaChi.Text = dgvDocGia.Rows[e.RowIndex].Cells[5].Value.ToString();
-            txtEmail.Text = dgvDocGia.Rows[e.RowIndex].Cells[6].Value.ToString();
-            rtbGhiChu.Text = dgvDocGia.Rows[e.RowIndex].Cells[7].Value.ToString();
-            btnSua.Enabled = true;
-            btnXoa.Enabled = true;
-            action = "update";
-        }
-
         private void btnSua_Click(object sender, EventArgs e)
         {
-            txtMaDocGia.Enabled = true;
+            txtMaDocGia.Enabled = false;
             txtHoTen.Enabled = true;
             dtpNgaySinh.Enabled = true;
             cbGioiTinh.Enabled = true;
@@ -190,6 +174,22 @@ namespace QuanLyThuVien
         private void txtTuKhoa_TextChanged(object sender, EventArgs e)
         {
             docGiaSer.searchModelBasic(cbLuaChon.Text, txtTuKhoa.Text, dgvDocGia);
+        }
+
+        private void dgvDocGia_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            txtMaDocGia.Text = dgvDocGia.Rows[e.RowIndex].Cells[0].Value.ToString();
+            txtHoTen.Text = dgvDocGia.Rows[e.RowIndex].Cells[1].Value.ToString();
+            string date = dgvDocGia.Rows[e.RowIndex].Cells[2].Value.ToString();
+            dtpNgaySinh.Value = DateTime.ParseExact(date, "dd-MM-yyyy", CultureInfo.InvariantCulture);
+            cbGioiTinh.Text = dgvDocGia.Rows[e.RowIndex].Cells[3].Value.ToString();
+            txtLop.Text = dgvDocGia.Rows[e.RowIndex].Cells[4].Value.ToString();
+            txtDiaChi.Text = dgvDocGia.Rows[e.RowIndex].Cells[5].Value.ToString();
+            txtEmail.Text = dgvDocGia.Rows[e.RowIndex].Cells[6].Value.ToString();
+            rtbGhiChu.Text = dgvDocGia.Rows[e.RowIndex].Cells[7].Value.ToString();
+            btnSua.Enabled = true;
+            btnXoa.Enabled = true;
+            action = "update";
         }
     }
 }
