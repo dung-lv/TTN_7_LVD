@@ -55,8 +55,6 @@ namespace QuanLyThuVien
                     phanQuyen = obj.ToString();
                     frmMain main = new frmMain();
                     main.ShowDialog();
-                    txtTenTaiKhoan.Text = "";
-                    txtMatKhau.Text = "";
                 }
             }
         }

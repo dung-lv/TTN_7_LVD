@@ -207,6 +207,7 @@
             this.Controls.Add(this.dgvTaiKhoan);
             this.Controls.Add(this.groupBox3);
             this.Name = "frmQuanLyTaiKhoan";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Quản lý tài khoản";
             this.Load += new System.EventHandler(this.frmQuanLyTaiKhoan_Load);
             this.groupBox3.ResumeLayout(false);
